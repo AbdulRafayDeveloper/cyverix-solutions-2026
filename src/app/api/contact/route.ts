@@ -44,7 +44,7 @@ export async function POST(req: Request) {
           <h2>Hi ${fullName},</h2>
           <p>Thank you for contacting Cyverix Solutions. We've received your inquiry about <strong>${service}</strong>.</p>
           <p>Our team will review your requirements and get back to you within 24 hours.</p>
-          <p>Best Regards,<br/><strong>Team Cyverix</strong></p>
+          <p>Best Regards,<br/><strong>Team Cyverix Solutions</strong></p>
         </div>
       `,
     };

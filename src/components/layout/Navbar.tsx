@@ -30,11 +30,14 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-        isScrolled ? "glass py-3" : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        isScrolled ? "pt-4 px-6 scale-[0.98]" : "px-6 py-4"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className={cn(
+        "max-w-7xl mx-auto flex items-center justify-between transition-all duration-500",
+        isScrolled ? "glass rounded-3xl px-8 py-3 translate-y-2" : ""
+      )}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 overflow-hidden rounded-lg">
@@ -51,22 +54,25 @@ export const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-text-secondary hover:text-primary transition-colors"
+              className="group relative text-xs font-bold uppercase tracking-widest text-text-secondary hover:text-primary transition-colors"
             >
               {link.name}
+              {link.name === "Careers" && (
+                <span className="absolute -top-3 -right-6 px-1.5 py-0.5 rounded-full bg-primary/20 text-[6px] text-primary border border-primary/20 animate-pulse">HIRING</span>
+              )}
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all group-hover:w-full" />
             </Link>
           ))}
           <Link
             href="#contact"
-            className="px-6 py-2.5 bg-cta text-background font-bold rounded-full text-sm glow-on-hover transition-all"
+            className="px-8 py-3 bg-cta text-background font-bold rounded-full text-xs uppercase tracking-widest glow-on-hover transition-all"
           >
-            Get a Free Quote
+            Start a Project
           </Link>
         </div>
 

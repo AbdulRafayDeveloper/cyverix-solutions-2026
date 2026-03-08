@@ -8,7 +8,7 @@ const testimonials = [
   {
     name: "Robert M. Chen",
     company: "Silicon Dynamics (USA)",
-    text: "Cyverix engineered our entire cloud infrastructure from the ground up. Their expertise in scalable AI is unmatched.",
+    text: "Cyverix Solutions engineered our entire cloud infrastructure from the ground up. Their expertise in scalable AI is unmatched.",
     rating: 5,
     flag: "🇺🇸",
   },
@@ -36,7 +36,7 @@ const testimonials = [
   {
     name: "James Wilson",
     company: "Quantum Analytics (USA)",
-    text: "Deep technical knowledge and professional communication. Cyverix is our go-to for all complex SaaS projects.",
+    text: "Deep technical knowledge and professional communication. Cyverix Solutions is our go-to for all complex SaaS projects.",
     rating: 5,
     flag: "🇺🇸",
   },
@@ -57,7 +57,7 @@ const testimonials = [
   {
     name: "Marcus Aurelius",
     company: "E-Commerce Titans (UK)",
-    text: "Cyverix transformed our legacy system into a modern, high-speed platform. Truly world-class software house.",
+    text: "Cyverix Solutions transformed our legacy system into a modern, high-speed platform. Truly world-class software house.",
     rating: 5,
     flag: "🇬🇧",
   },
@@ -71,7 +71,7 @@ const testimonials = [
   {
     name: "Michael J. Fox",
     company: "Startup Lab (USA)",
-    text: "Speed, quality, and amazing design. Cyverix is easily the best tech partner we have encountered in years.",
+    text: "Speed, quality, and amazing design. Cyverix Solutions is easily the best tech partner we have encountered in years.",
     rating: 5,
     flag: "🇺🇸",
   },

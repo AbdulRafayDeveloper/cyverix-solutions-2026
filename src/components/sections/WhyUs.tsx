@@ -2,15 +2,15 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ShieldCheck, Zap, Globe2, Clock, Users, Award } from "lucide-react";
+import { ShieldCheck, Zap, Globe2, Clock, Users, Award, Box, Layers, MousePointer2 } from "lucide-react";
 
 const stats = [
-  { icon: <Award />, value: 2, label: "+ Years Experience", desc: "Proven track record since 2024." },
-  { icon: <Zap />, value: 100, label: "+ Projects Delivered", desc: "Diverse portfolio of success stories." },
-  { icon: <Globe2 />, value: 12, label: "+ Countries Served", desc: "Global footprint with local expertise." },
-  { icon: <Clock />, value: 100, label: "% On-Time Delivery", desc: "We value your time as much as ours." },
-  { icon: <ShieldCheck />, value: 100, label: "% NDA & IP Protection", desc: "Your ideas are safe with us." },
-  { icon: <Users />, value: 8, label: "Dedicated PMs", desc: "One point of contact for seamless comms." },
+  { icon: <Award size={28} />, value: 2, label: "+ EXPERIENCE", desc: "Proven track record since 2024.", color: "text-primary", bg: "bg-primary/5" },
+  { icon: <Zap size={28} />, value: 100, label: "+ PROJECTS", desc: "Diverse portfolio of success stories.", color: "text-secondary", bg: "bg-secondary/5" },
+  { icon: <Globe2 size={28} />, value: 12, label: "+ COUNTRIES", desc: "Global footprint with local expertise.", color: "text-primary", bg: "bg-primary/5" },
+  { icon: <Clock size={28} />, value: 100, label: "% UPTIME", desc: "We value your time as much as ours.", color: "text-secondary", bg: "bg-secondary/5" },
+  { icon: <ShieldCheck size={28} />, value: 100, label: "% SECURE", desc: "Your ideas are safe with us.", color: "text-primary", bg: "bg-primary/5" },
+  { icon: <Users size={28} />, value: 8, label: "EXPERT PMs", desc: "One point of contact for seamless comms.", color: "text-secondary", bg: "bg-secondary/5" },
 ];
 
 const Counter = ({ value }: { value: number }) => {
@@ -40,21 +40,30 @@ const Counter = ({ value }: { value: number }) => {
 
 export const WhyUs = () => {
   return (
-    <section className="py-24 px-6 bg-surface/50 relative overflow-hidden">
-      {/* Decorative Blur */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/5 blur-[120px] rounded-full -z-10" />
+    <section className="py-32 px-6 bg-background relative overflow-hidden">
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="text-4xl md:text-5xl font-syne font-bold mb-6"
+        <div className="text-center mb-24 max-w-2xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="flex items-center justify-center gap-2 mb-6"
           >
-            Why Businesses <br /> <span className="text-secondary">Choose Us</span>
+             <div className="h-[1px] w-8 bg-primary/40" />
+             <span className="text-primary font-mono text-xs uppercase tracking-[0.4em]">Why Cyverix Solutions</span>
+             <div className="h-[1px] w-8 bg-primary/40" />
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-syne font-bold mb-8 tracking-tighter leading-[0.9]"
+          >
+             Building <br /> <span className="text-gradient">Trust by Quality.</span>
           </motion.h2>
-          <p className="text-text-secondary max-w-xl">
-            We don't just build software; we build foundations for growth. Our approach combines technical rigor with business intelligence.
+          <p className="text-text-secondary text-lg leading-relaxed">
+            We don&apos;t just build software; we build foundations for growth. Our approach combines technical rigor with business intelligence.
           </p>
         </div>
 
@@ -65,19 +74,27 @@ export const WhyUs = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="p-8 rounded-3xl bg-surface border border-border/50 hover:bg-background/40 hover:scale-[1.02] transition-all"
+              className="p-10 rounded-[3rem] bg-surface/40 border border-border/80 hover:border-primary/20 hover:bg-surface/60 transition-all duration-700 group hover:-translate-y-2 relative"
             >
-              <div className="text-primary mb-6">
-                {React.cloneElement(stat.icon as React.ReactElement<{ size: number }>, { size: 36 })}
+              {/* Card Glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity bg-primary/5 blur-3xl pointer-events-none" />
+              
+              <div className={`${stat.color} mb-8 ${stat.bg} w-16 h-16 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 group-hover:rotate-12`}>
+                {stat.icon}
               </div>
-              <div className="text-4xl font-syne font-extrabold text-text-primary mb-2">
+              
+              <div className="text-5xl font-syne font-extrabold text-text-primary mb-2 flex items-center gap-1 group-hover:text-primary transition-colors">
                 <Counter value={stat.value} />
-                {stat.label.includes("+") ? "+" : stat.label.includes("%") ? "%" : ""}
+                <span className="text-2xl font-bold opacity-60 group-hover:opacity-100 transition-opacity">
+                  {stat.label.includes("+") ? "+" : stat.label.includes("%") ? "%" : ""}
+                </span>
               </div>
-              <div className="text-primary font-bold text-sm uppercase tracking-tighter mb-4">
+              
+              <div className="text-text-secondary font-mono text-[10px] uppercase tracking-[0.2em] mb-6">
                 {stat.label.replace("+", "").replace("%", "")}
               </div>
-              <p className="text-text-secondary text-sm">
+              
+              <p className="text-text-secondary text-sm leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">
                 {stat.desc}
               </p>
             </motion.div>

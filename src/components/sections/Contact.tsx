@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Loader2, Linkedin, Github, Instagram, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Loader2, Linkedin, Facebook, Instagram } from "lucide-react";
 
 export const Contact = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -46,104 +46,143 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-syne font-bold mb-6">Let&apos;s Build Something <span className="text-gradient">Together</span></h2>
-          <p className="text-text-secondary">Ready to start your next project? We&apos;re just one message away.</p>
-        </div>
+    <section id="contact" className="py-32 px-6 relative overflow-hidden bg-background">
+      {/* Background Glows */}
+      <div className="absolute -top-24 -right-24 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-[600px] h-[600px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          {/* Left Column: Info */}
+          <div>
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="text-primary font-mono text-xs uppercase tracking-[0.5em] mb-6 block"
+            >
+              Contact Us
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-5xl md:text-7xl font-syne font-bold mb-8 tracking-tighter leading-tight"
+            >
+              Let&apos;s build the <br /> <span className="text-gradient">next big thing.</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-text-secondary text-lg max-w-md mb-12 leading-relaxed"
+            >
+              Whether you have a fully formed idea or just a spark of inspiration, 
+              we&apos;re here to engineer it into reality.
+            </motion.p>
+
+            <div className="flex flex-col gap-6">
+              {[
+                { icon: <Mail size={24} />, label: "Email", value: "hello@cyverix.com", color: "text-primary" },
+                { icon: <Phone size={24} />, label: "WhatsApp", value: "+92 300 1234567", color: "text-secondary" },
+                { icon: <MapPin size={24} />, label: "Location", value: "Faisalabad, Pakistan", color: "text-primary" },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center gap-6 p-6 glass rounded-3xl hover:bg-white/5 transition-colors group"
+                >
+                  <div className={`w-14 h-14 rounded-2xl bg-surface border border-border flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform`}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-text-secondary mb-1">{item.label}</p>
+                    <p className="font-bold text-lg">{item.value}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="flex gap-4 mt-12">
+              <a href="https://linkedin.com" className="w-12 h-12 rounded-full glass flex items-center justify-center hover:text-primary transition-all"><Linkedin size={20} /></a>
+              <a href="https://facebook.com" className="w-12 h-12 rounded-full glass flex items-center justify-center hover:text-primary transition-all"><Facebook size={20} /></a>
+              <a href="https://instagram.com" className="w-12 h-12 rounded-full glass flex items-center justify-center hover:text-primary transition-all"><Instagram size={20} /></a>
+            </div>
+          </div>
+
+          {/* Right Column: Form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="p-8 md:p-12 glass rounded-[2.5rem]"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="p-10 md:p-14 glass rounded-[3rem] shadow-2xl relative"
           >
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-mono uppercase tracking-widest text-text-secondary px-1">Full Name</label>
+            {/* Form Glow */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 blur-[80px] rounded-full pointer-events-none" />
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="flex flex-col gap-3">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-text-secondary">Full Name</label>
                   <input
                     required
                     type="text"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    placeholder="Enter your name"
-                    className="bg-surface/50 border border-border p-4 rounded-xl focus:outline-none focus:border-primary transition-colors text-white"
+                    placeholder="E.g. Elon Musk"
+                    className="bg-background/50 border-b border-border p-3 focus:outline-none focus:border-primary transition-all text-white placeholder:text-text-secondary/30"
                   />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-mono uppercase tracking-widest text-text-secondary px-1">Email Address</label>
+                <div className="flex flex-col gap-3">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-text-secondary">Email Address</label>
                   <input
                     required
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="name@example.com"
-                    className="bg-surface/50 border border-border p-4 rounded-xl focus:outline-none focus:border-primary transition-colors text-white"
+                    placeholder="your@email.com"
+                    className="bg-background/50 border-b border-border p-3 focus:outline-none focus:border-primary transition-all text-white placeholder:text-text-secondary/30"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-mono uppercase tracking-widest text-text-secondary px-1">Phone (Optional)</label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+92 3XX XXXXXXX"
-                    className="bg-surface/50 border border-border p-4 rounded-xl focus:outline-none focus:border-primary transition-colors text-white"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-mono uppercase tracking-widest text-text-secondary px-1">Service Interested In</label>
-                  <select
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="bg-surface/50 border border-border p-4 rounded-xl focus:outline-none focus:border-primary transition-colors text-white appearance-none"
-                  >
-                    <option>Website</option>
-                    <option>Web App</option>
-                    <option>AI Solution</option>
-                    <option>Mobile App</option>
-                    <option>Other</option>
-                  </select>
+              <div className="flex flex-col gap-3">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-text-secondary">Service</label>
+                <div className="flex flex-wrap gap-2">
+                  {["Website", "Web App", "AI Solution", "Mobile App"].map(s => (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, service: s })}
+                      className={`px-4 py-2 rounded-full text-xs font-bold border transition-all ${
+                        formData.service === s 
+                        ? "bg-primary text-background border-primary shadow-[0_0_20px_rgba(0,255,178,0.3)]" 
+                        : "border-border text-text-secondary hover:border-text-secondary"
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-xs font-mono uppercase tracking-widest text-text-secondary px-1">Project Budget</label>
-                <select
-                  value={formData.budget}
-                  onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                  className="bg-surface/50 border border-border p-4 rounded-xl focus:outline-none focus:border-primary transition-colors text-white appearance-none"
-                >
-                  <option>&lt; $1k</option>
-                  <option>$1k–$5k</option>
-                  <option>$5k–$20k</option>
-                  <option>$20k+</option>
-                </select>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label className="text-xs font-mono uppercase tracking-widest text-text-secondary px-1">Message</label>
+              <div className="flex flex-col gap-3">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-text-secondary">Tell us about your project</label>
                 <textarea
                   required
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell us about your project..."
-                  className="bg-surface/50 border border-border p-4 rounded-xl focus:outline-none focus:border-primary transition-colors text-white resize-none"
+                  placeholder="I have a vision for..."
+                  className="bg-background/50 border-b border-border p-3 focus:outline-none focus:border-primary transition-all text-white resize-none placeholder:text-text-secondary/30"
                 />
               </div>
 
               <button
                 disabled={status === "loading"}
                 type="submit"
-                className="w-full py-4 mt-4 bg-cta rounded-xl font-bold text-background flex items-center justify-center gap-3 glow-on-hover transition-all disabled:opacity-50"
+                className="group relative w-full py-5 bg-cta rounded-2xl font-bold text-background flex items-center justify-center gap-3 overflow-hidden shadow-2xl transition-all hover:scale-[1.02]"
               >
+                <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                 {status === "loading" ? (
                   <Loader2 className="animate-spin" size={24} />
                 ) : status === "success" ? (
@@ -151,73 +190,15 @@ export const Contact = () => {
                 ) : (
                   <Send size={24} />
                 )}
-                {status === "loading" ? "Sending..." : status === "success" ? "Sent Successfully!" : "Send Message"}
+                <span className="relative z-10">
+                  {status === "loading" ? "SENDING..." : status === "success" ? "MESSAGE SENT" : "IGNITE PROJECT"}
+                </span>
               </button>
-
+              
               {status === "error" && (
-                <p className="text-center text-red-400 text-sm font-mono mt-2">Failed to send message. Please try again or email us directly.</p>
+                <p className="text-center text-red-400 text-xs font-mono">SYSTEM_ERROR: Please try again later.</p>
               )}
             </form>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="flex flex-col gap-8 justify-center"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-              <div className="p-6 glass rounded-2xl flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background transition-all">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <h4 className="text-xs font-mono uppercase text-text-secondary">Email</h4>
-                  <p className="font-bold">hello@cyverix.com</p>
-                </div>
-              </div>
-              
-              <div className="p-6 glass rounded-2xl flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <h4 className="text-xs font-mono uppercase text-text-secondary">WhatsApp</h4>
-                  <p className="font-bold">+92 300 1234567</p>
-                </div>
-              </div>
-
-              <div className="p-6 glass rounded-2xl flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background transition-all">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <h4 className="text-xs font-mono uppercase text-text-secondary">Location</h4>
-                  <p className="font-bold">Faisalabad, PK</p>
-                </div>
-              </div>
-
-              <div className="p-6 glass rounded-2xl flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-border flex items-center justify-center text-text-secondary">
-                  <Clock size={24} />
-                </div>
-                <div>
-                  <h4 className="text-xs font-mono uppercase text-text-secondary">Response Time</h4>
-                  <p className="font-bold">Within 24 hours</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-4 mt-8">
-              <a 
-                href="https://www.linkedin.com/company/cyverix-solutions" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-all"
-              >
-                <Linkedin size={24} />
-              </a>
-            </div>
           </motion.div>
         </div>
       </div>

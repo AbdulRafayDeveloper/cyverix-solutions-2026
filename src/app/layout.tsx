@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cyverix.com"),
   title: "Cyverix Solutions | Advanced AI & Software Engineering House",
   description: "Cyverix Solutions is a premier Faisalabad-based software house specializing in SaaS, AI automation, and high-scale digital products. Founded in 2024, we build the future of tech.",
   keywords: ["Cyverix Solutions", "Software House Faisalabad", "AI Solutions Pakistan", "SaaS Development", "Mobile App Development Faisalabad", "Software House in Faisalabad"],
   authors: [{ name: "Cyverix Solutions" }],
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   alternates: {
     canonical: "https://cyverix.com",

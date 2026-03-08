@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
@@ -22,49 +22,65 @@ const CustomCursor = () => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    const handleMouseOver = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).tagName === "A" || (e.target as HTMLElement).tagName === "BUTTON") {
+      const target = e.target as HTMLElement;
+      if (target.closest("a, button, [role='button']")) {
         setIsHovering(true);
       } else {
         setIsHovering(false);
       }
     };
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseover", handleMouseOver);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseover", handleMouseOver);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 rounded-full border border-primary pointer-events-none z-[9999] hidden md:block mix-blend-difference"
+        className="fixed top-0 left-0 w-12 h-12 rounded-full border border-primary/40 pointer-events-none z-[9999] hidden md:block"
         animate={{
-          x: mousePos.x - 20,
-          y: mousePos.y - 20,
-          scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? "rgba(0, 255, 178, 0.1)" : "rgba(0,0,0,0)",
+          x: mousePos.x - 24,
+          y: mousePos.y - 24,
+          scale: isHovering ? 1.6 : 1,
+          borderWidth: isHovering ? "1px" : "2px",
+          borderColor: isHovering ? "rgba(0, 255, 178, 0.4)" : "rgba(0, 255, 178, 0.2)",
+          backgroundColor: isHovering ? "rgba(0, 255, 178, 0.05)" : "transparent",
         }}
-        transition={{ type: "spring", damping: 25, stiffness: 150, mass: 0.5 }}
+        transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.6 }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-primary rounded-full pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-primary rounded-full pointer-events-none z-[99999] hidden md:block shadow-[0_0_10px_#00FFB2]"
         animate={{
           x: mousePos.x - 3,
           y: mousePos.y - 3,
+          scale: isHovering ? 4 : 1,
+          opacity: isHovering ? 0 : 1,
         }}
-        transition={{ type: "spring", damping: 30, stiffness: 450, mass: 0.1 }}
+        transition={{ type: "spring", damping: 35, stiffness: 600, mass: 0.1 }}
       />
     </>
+  );
+};
+
+const ScrollProgress = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary z-[100] origin-left"
+      style={{ scaleX }}
+    />
   );
 };
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
+      <ScrollProgress />
       <CustomCursor />
       <Navbar />
       <Hero />

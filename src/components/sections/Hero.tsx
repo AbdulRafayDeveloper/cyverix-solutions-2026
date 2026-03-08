@@ -102,20 +102,31 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 pb-16 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 pb-16 overflow-hidden mesh-gradient">
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-bg pointer-events-none" />
+      
+      {/* Glow Effects */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 blur-[150px] rounded-full -z-10 animate-pulse-slow" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary/10 blur-[150px] rounded-full -z-10 animate-pulse-slow" />
+
       {/* Background Particles */}
       <canvas
         ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full -z-10 opacity-60"
+        className="absolute top-0 left-0 w-full h-full -z-10 opacity-70"
       />
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 text-center z-10">
+      <motion.div
+        className="max-w-7xl mx-auto px-6 text-center z-10"
+        animate={{ y: [0, -5, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono mb-8 animate-pulse-slow"
         >
           <Sparkles size={14} />
           <span>NOW POWERED BY NEXT-GEN AI</span>
@@ -156,7 +167,7 @@ export const Hero = () => {
             Talk to Us
           </button>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div
