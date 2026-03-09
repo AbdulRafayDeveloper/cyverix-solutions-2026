@@ -52,7 +52,7 @@ export const About = () => {
               <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-6">
                 <Target size={24} />
               </div>
-              <h4 className="text-3xl font-syne font-extrabold text-white mb-2">2024</h4>
+              <h4 className="text-3xl font-syne font-extrabold text-white mb-2">2023</h4>
               <p className="text-xs text-text-secondary uppercase tracking-[0.2em] font-mono">Inception</p>
             </div>
             <div>

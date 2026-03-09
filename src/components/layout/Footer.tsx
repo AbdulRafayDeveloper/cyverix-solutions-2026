@@ -28,7 +28,7 @@ export const Footer = () => {
             </span>
           </Link>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Engineering the future of digital products since 2024. 
+            Engineering the future of digital products since 2023. 
             Boutique software house building world-class SaaS, AI solutions, and apps.
           </p>
           <div className="flex gap-4">

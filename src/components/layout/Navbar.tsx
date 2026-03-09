@@ -44,7 +44,8 @@ export const Navbar = () => {
             <Image 
               src="/logo.png" 
               alt="Cyverix Solutions Logo" 
-              fill
+              width={40}
+              height={40}
               priority
               className="object-contain"
             />

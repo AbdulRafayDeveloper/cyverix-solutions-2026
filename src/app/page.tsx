@@ -2,18 +2,21 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
-import { Services } from "@/components/sections/Services";
-import { WhyUs } from "@/components/sections/WhyUs";
-import { Process } from "@/components/sections/Process";
-import { TechStack } from "@/components/sections/TechStack";
-import { Portfolio } from "@/components/sections/Portfolio";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { About } from "@/components/sections/About";
-import { Careers } from "@/components/sections/Careers";
-import { Contact } from "@/components/sections/Contact";
-import { Footer } from "@/components/layout/Footer";
+
+// Dynamic imports for optimized loading
+const Services = dynamic(() => import("@/components/sections/Services").then(m => m.Services));
+const WhyUs = dynamic(() => import("@/components/sections/WhyUs").then(m => m.WhyUs));
+const Process = dynamic(() => import("@/components/sections/Process").then(m => m.Process));
+const TechStack = dynamic(() => import("@/components/sections/TechStack").then(m => m.TechStack));
+const Portfolio = dynamic(() => import("@/components/sections/Portfolio").then(m => m.Portfolio));
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials").then(m => m.Testimonials));
+const About = dynamic(() => import("@/components/sections/About").then(m => m.About));
+const Careers = dynamic(() => import("@/components/sections/Careers").then(m => m.Careers));
+const Contact = dynamic(() => import("@/components/sections/Contact").then(m => m.Contact));
+const Footer = dynamic(() => import("@/components/layout/Footer").then(m => m.Footer));
 
 const CustomCursor = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });

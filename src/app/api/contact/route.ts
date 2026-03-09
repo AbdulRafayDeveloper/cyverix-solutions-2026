@@ -44,7 +44,7 @@ export async function POST(req: Request) {
           </div>
 
           <div style="text-align: center; border-top: 1px solid #1E1E2E; padding-top: 24px;">
-            <p style="color: #8888AA; font-size: 12px;">© 2024 Cyverix Solutions. Engineered for Excellence.</p>
+            <p style="color: #8888AA; font-size: 12px;">© 2023 Cyverix Solutions. Engineered for Excellence.</p>
           </div>
         </div>
       `,
@@ -85,7 +85,7 @@ export async function POST(req: Request) {
               <a href="#" style="color: #00FFB2; text-decoration: none; margin: 0 10px; font-size: 12px; font-weight: 700;">INSTAGRAM</a>
             </div>
             <p style="color: #444455; font-size: 11px;">
-              © 2024 Cyverix Solutions <br/>
+              © 2023 Cyverix Solutions <br/>
               Faisalabad, PK
             </p>
           </div>

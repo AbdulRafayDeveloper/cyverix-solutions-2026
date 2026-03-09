@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -10,9 +9,8 @@
   --color-text-primary: #F0F0FF;
   --color-text-secondary: #8888AA;
   
-  --font-syne: "Syne", sans-serif;
-  --font-dm-sans: "DM Sans", sans-serif;
-  --font-jetbrains-mono: "JetBrains Mono", monospace;
+  --font-syne: var(--font-syne), "Syne", sans-serif;
+  --font-inter: var(--font-inter), "Inter", sans-serif;
 }
 
 :root {

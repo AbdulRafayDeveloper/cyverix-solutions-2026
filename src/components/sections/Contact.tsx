@@ -1,8 +1,25 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Loader2, Linkedin, Facebook, Instagram } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Loader2, Linkedin, Facebook, Instagram, AlertCircle, Sparkles } from "lucide-react";
+
+const Toast = ({ message, type, onClose }: { message: string, type: "success" | "error", onClose: () => void }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    exit={{ opacity: 0, y: 20, scale: 0.9 }}
+    className={`fixed bottom-10 left-1/2 -translate-x-1/2 z-[1000002] px-8 py-4 rounded-2xl glass border flex items-center gap-4 shadow-2xl min-w-[320px] ${
+      type === "success" ? "border-primary/40 bg-primary/5" : "border-red-500/40 bg-red-500/5"
+    }`}
+  >
+    {type === "success" ? <CheckCircle2 className="text-primary" /> : <AlertCircle className="text-red-500" />}
+    <p className="text-sm font-bold tracking-tight">{message}</p>
+    <button onClick={onClose} className="ml-auto opacity-40 hover:opacity-100 transition-opacity">
+      <Sparkles size={16} />
+    </button>
+  </motion.div>
+);
 
 export const Contact = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -12,6 +29,8 @@ export const Contact = () => {
     service: "Website",
     message: "",
   });
+
+  const [showToast, setShowToast] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,18 +45,24 @@ export const Contact = () => {
 
       if (res.ok) {
         setStatus("success");
+        setShowToast(true);
         setFormData({
           fullName: "",
           email: "",
           service: "Website",
           message: "",
         });
-        setTimeout(() => setStatus("idle"), 5000);
+        setTimeout(() => {
+          setStatus("idle");
+          setShowToast(false);
+        }, 5000);
       } else {
         setStatus("error");
+        setShowToast(true);
       }
     } catch (err) {
       setStatus("error");
+      setShowToast(true);
     }
   };
 
@@ -198,6 +223,15 @@ export const Contact = () => {
           </motion.div>
         </div>
       </div>
+      <AnimatePresence>
+        {showToast && (
+          <Toast 
+            message={status === "success" ? "Transmission Successful. Our engineers will follow up." : "System Error. Protocol Breach Detected."} 
+            type={status === "success" ? "success" : "error"}
+            onClose={() => setShowToast(false)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

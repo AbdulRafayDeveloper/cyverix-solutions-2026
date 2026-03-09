@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { ShieldCheck, Zap, Globe2, Clock, Users, Award, Box, Layers, MousePointer2 } from "lucide-react";
 
 const stats = [
-  { icon: <Award size={28} />, value: 2, label: "+ EXPERIENCE", desc: "Proven track record since 2024.", color: "text-primary", bg: "bg-primary/5" },
+  { icon: <Award size={28} />, value: 3, label: "+ EXPERIENCE", desc: "Proven track record since 2023.", color: "text-primary", bg: "bg-primary/5" },
   { icon: <Zap size={28} />, value: 100, label: "+ PROJECTS", desc: "Diverse portfolio of success stories.", color: "text-secondary", bg: "bg-secondary/5" },
   { icon: <Globe2 size={28} />, value: 12, label: "+ COUNTRIES", desc: "Global footprint with local expertise.", color: "text-primary", bg: "bg-primary/5" },
   { icon: <Clock size={28} />, value: 100, label: "% UPTIME", desc: "We value your time as much as ours.", color: "text-secondary", bg: "bg-secondary/5" },

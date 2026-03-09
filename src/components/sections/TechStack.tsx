@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import { Code2, Server, Database, Brain, Smartphone, ShieldCheck } from "lucide-react";
 
 const techCategories = [
-  { icon: <Code2 size={24} />, title: "Frontend", techs: ["Next.js", "React", "TypeScript", "Vue", "Angular", "TailwindCSS"] },
-  { icon: <Server size={24} />, title: "Backend", techs: ["Next.js", "Node.js", "Python", "Flask", "Fast API", "Go", "Laravel"] },
-  { icon: <Database size={24} />, title: "Database", techs: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "Firebase", "Redis"] },
-  { icon: <Brain size={24} />, title: "AI/ML", techs: ["OpenAI", "Gemini API", "Groq API", "PyTorch", "TensorFlow", "NLP"] },
-  { icon: <ShieldCheck size={24} />, title: "Automation", techs: ["Loveable", "n8n", "Make.com", "Zapier", "Browser Automation"] },
+  { icon: <Code2 size={24} />, title: "Web Frontend", techs: ["Next.js", "React", "TypeScript", "TailwindCSS", "Bootstrap", "Material UI"] },
+  { icon: <Smartphone size={24} />, title: "Mobile Apps", techs: ["Flutter", "React Native", "Ionic", "iOS Native", "Android Native"] },
+  { icon: <Server size={24} />, title: "Backend", techs: ["Node.js", "Nest.js", "Python", "Django", "Flask", "Go", "Laravel"] },
+  { icon: <Database size={24} />, title: "Database", techs: ["PostgreSQL", "MySQL", "Cassandra", "MariaDB", "Supabase", "Redis"] },
+  { icon: <Brain size={24} />, title: "AI/ML", techs: ["OpenAI", "Hugging Face", "LangChain", "Pinecone", "Gemini API", "Groq API"] },
+  { icon: <ShieldCheck size={24} />, title: "DevOps & Automation", techs: ["Docker", "Kubernetes", "Replit", "n8n", "Make.com", "Zapier"] },
 ];
 
 export const TechStack = () => {
