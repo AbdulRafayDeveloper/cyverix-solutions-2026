@@ -9,9 +9,7 @@ export const Contact = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    phone: "",
     service: "Website",
-    budget: "< $1k",
     message: "",
   });
 
@@ -31,9 +29,7 @@ export const Contact = () => {
         setFormData({
           fullName: "",
           email: "",
-          phone: "",
           service: "Website",
-          budget: "< $1k",
           message: "",
         });
         setTimeout(() => setStatus("idle"), 5000);
@@ -148,7 +144,7 @@ export const Contact = () => {
               <div className="flex flex-col gap-3">
                 <label className="text-[10px] font-mono uppercase tracking-widest text-text-secondary">Service</label>
                 <div className="flex flex-wrap gap-2">
-                  {["Website", "Web App", "AI Solution", "Mobile App"].map(s => (
+                  {["Website", "Ai solution", "Mobile App", "Software Developement"].map(s => (
                     <button
                       key={s}
                       type="button"

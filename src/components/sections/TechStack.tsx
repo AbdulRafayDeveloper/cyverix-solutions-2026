@@ -5,10 +5,11 @@ import { motion } from "framer-motion";
 import { Code2, Server, Database, Brain, Smartphone, ShieldCheck } from "lucide-react";
 
 const techCategories = [
-  { icon: <Code2 size={24} />, title: "Frontend", techs: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion"] },
-  { icon: <Server size={24} />, title: "Backend", techs: ["Node.js", "Python", "Go", "Laravel", "Nest.js"] },
-  { icon: <Database size={24} />, title: "Database", techs: ["PostgreSQL", "MongoDB", "Redis", "Firebase", "ElasticSearch"] },
-  { icon: <Brain size={24} />, title: "AI/ML", techs: ["OpenAI", "PyTorch", "TensorFlow", "NLP", "Computer Vision"] },
+  { icon: <Code2 size={24} />, title: "Frontend", techs: ["Next.js", "React", "TypeScript", "Vue", "Angular", "TailwindCSS"] },
+  { icon: <Server size={24} />, title: "Backend", techs: ["Next.js", "Node.js", "Python", "Flask", "Fast API", "Go", "Laravel"] },
+  { icon: <Database size={24} />, title: "Database", techs: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "Firebase", "Redis"] },
+  { icon: <Brain size={24} />, title: "AI/ML", techs: ["OpenAI", "Gemini API", "Groq API", "PyTorch", "TensorFlow", "NLP"] },
+  { icon: <ShieldCheck size={24} />, title: "Automation", techs: ["Loveable", "n8n", "Make.com", "Zapier", "Browser Automation"] },
 ];
 
 export const TechStack = () => {

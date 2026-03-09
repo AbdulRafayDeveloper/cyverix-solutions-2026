@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { MoveRight, Sparkles } from "lucide-react";
 
 export const Hero = () => {
@@ -34,10 +35,10 @@ export const Hero = () => {
       constructor() {
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
-        this.size = Math.random() * 2 + 0.1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        this.color = Math.random() > 0.5 ? "#00FFB222" : "#7B5EA722";
+        this.size = Math.random() * 3 + 1;
+        this.speedX = (Math.random() - 0.5) * 1.5;
+        this.speedY = (Math.random() - 0.5) * 1.5;
+        this.color = Math.random() > 0.5 ? "rgba(0, 255, 178, 0.4)" : "rgba(123, 94, 167, 0.4)";
       }
 
       update() {
@@ -60,7 +61,7 @@ export const Hero = () => {
 
     const init = () => {
       particles = [];
-      const count = Math.min((window.innerWidth * window.innerHeight) / 9000, 150);
+      const count = Math.min((window.innerWidth * window.innerHeight) / 7000, 200);
       for (let i = 0; i < count; i++) {
         particles.push(new Particle());
       }
@@ -70,15 +71,15 @@ export const Hero = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Draw connections
-      ctx.lineWidth = 0.8;
+      ctx.lineWidth = 1.2;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 150) {
-            ctx.strokeStyle = `rgba(0, 255, 178, ${0.2 * (1 - distance / 150)})`;
+          if (distance < 180) {
+            ctx.strokeStyle = `rgba(0, 255, 178, ${0.4 * (1 - distance / 180)})`;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -159,13 +160,19 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
         >
-          <button className="group relative px-8 py-4 bg-cta rounded-full font-bold text-background glow-on-hover flex items-center gap-2 transition-all overflow-hidden">
+          <Link 
+            href="#portfolio"
+            className="group relative px-8 py-4 bg-cta rounded-full font-bold text-background glow-on-hover flex items-center gap-2 transition-all overflow-hidden"
+          >
             <span className="relative z-10 transition-transform group-hover:-translate-x-1">See Our Work</span>
             <MoveRight className="relative z-10 transition-transform group-hover:translate-x-1" size={20} />
-          </button>
-          <button className="px-8 py-4 rounded-full border border-border hover:border-primary/50 text-text-primary font-bold transition-all bg-surface/50">
+          </Link>
+          <Link 
+            href="#contact"
+            className="px-8 py-4 rounded-full border border-border hover:border-primary/50 text-text-primary font-bold transition-all bg-surface/50"
+          >
             Talk to Us
-          </button>
+          </Link>
         </motion.div>
       </motion.div>
 

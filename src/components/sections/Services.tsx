@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { Globe, Cpu, Bot, Smartphone, ArrowRight, X, CheckCircle2 } from "lucide-react";
 
 const services = [
   {
     icon: <Globe className="text-primary" size={32} />,
-    title: "Web Development",
+    title: "Website",
     description: "Custom websites & portals built for high performance, conversion, and global accessibility.",
     label: "WEB",
     details: "Our web development process focuses on creating scalable, secure, and blazing-fast user interfaces. We use the latest technologies like Next.js, React, and high-end CSS architectures to ensure your brand stands out in the digital landscape.",
@@ -16,7 +17,7 @@ const services = [
   },
   {
     icon: <Cpu className="text-primary" size={32} />,
-    title: "Web-Based Software",
+    title: "Software Developement",
     description: "Enterprise SaaS platforms and robust business tools engineered for massive scale and reliability.",
     label: "SAAS",
     details: "We build enterprise-grade SaaS platforms and ERP systems designed to handle thousands of concurrent users. Our focus is on database integrity, secure authentication, and cloud scalability.",
@@ -25,7 +26,7 @@ const services = [
   },
   {
     icon: <Bot className="text-primary" size={32} />,
-    title: "AI Solutions",
+    title: "Ai solution",
     description: "Smart automation, NLP tools, and AI integrations that save time and optimize decision-making.",
     label: "AI",
     details: "Cyverix Solutions leverages cutting-edge NLP and computer vision models to automate manual workflows. We integrate OpenAI, Anthropic, and custom LLM solutions directly into your business logic.",
@@ -34,7 +35,7 @@ const services = [
   },
   {
     icon: <Smartphone className="text-primary" size={32} />,
-    title: "Mobile Apps",
+    title: "Mobile App",
     description: "Native and cross-platform apps for iOS & Android with buttery-smooth user experiences.",
     label: "APPS",
     details: "We deliver high-fidelity mobile applications using React Native and Flutter. Our apps bridge the gap between performance and reach, ensuring a consistent look across all devices.",
@@ -90,12 +91,13 @@ const Modal = ({ service, onClose }: { service: any; onClose: () => void }) => {
         </div>
 
         <div className="mt-12">
-          <button 
+          <Link 
+            href="#contact"
             onClick={onClose}
-            className="w-full py-4 bg-cta rounded-2xl font-bold text-background glow-on-hover transition-all"
+            className="block w-full py-4 bg-cta rounded-2xl font-bold text-background glow-on-hover transition-all text-center"
           >
             Start a Project with Us
-          </button>
+          </Link>
         </div>
       </motion.div>
     </motion.div>

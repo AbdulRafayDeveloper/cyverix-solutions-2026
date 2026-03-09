@@ -36,7 +36,7 @@ const CustomCursor = () => {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 rounded-full border border-primary/40 pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 w-12 h-12 rounded-full border border-primary/40 pointer-events-none z-[1000000] hidden md:block" // Ultra-high z-index
         animate={{
           x: mousePos.x - 24,
           y: mousePos.y - 24,
@@ -48,7 +48,7 @@ const CustomCursor = () => {
         transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.6 }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-primary rounded-full pointer-events-none z-[99999] hidden md:block shadow-[0_0_10px_#00FFB2]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-primary rounded-full pointer-events-none z-[1000001] hidden md:block shadow-[0_0_10px_#00FFB2]" // Ultra-high z-index
         animate={{
           x: mousePos.x - 3,
           y: mousePos.y - 3,
@@ -71,7 +71,7 @@ const ScrollProgress = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary z-[100] origin-left"
+      className="fixed top-0 left-0 right-0 h-1 bg-primary z-[1000000] origin-left shadow-[0_0_10px_#00FFB2]" // Matches primary color
       style={{ scaleX }}
     />
   );
