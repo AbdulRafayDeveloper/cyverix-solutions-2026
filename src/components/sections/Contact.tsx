@@ -86,7 +86,7 @@ export const Contact = () => {
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-7xl font-syne font-bold mb-8 tracking-tighter leading-tight"
+              className="text-4xl md:text-7xl font-syne font-bold mb-8 tracking-tighter leading-tight"
             >
               Let&apos;s build the <br /> <span className="text-gradient">next big thing.</span>
             </motion.h2>
@@ -94,7 +94,7 @@ export const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-text-secondary text-lg max-w-md mb-12 leading-relaxed"
+              className="text-base md:text-lg max-w-md mb-12 leading-relaxed"
             >
               Whether you have a fully formed idea or just a spark of inspiration, 
               we&apos;re here to engineer it into reality.
@@ -135,13 +135,13 @@ export const Contact = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="p-10 md:p-14 glass rounded-[3rem] shadow-2xl relative"
+            className="p-6 md:p-14 glass rounded-3xl md:rounded-[3rem] shadow-2xl relative"
           >
             {/* Form Glow */}
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 blur-[80px] rounded-full pointer-events-none" />
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6 md:gap-8">
+              <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8">
                 <div className="flex flex-col gap-3">
                   <label className="text-[10px] font-mono uppercase tracking-widest text-text-secondary">Full Name</label>
                   <input
@@ -150,7 +150,7 @@ export const Contact = () => {
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     placeholder="E.g. Elon Musk"
-                    className="bg-background/50 border-b border-border p-3 focus:outline-none focus:border-primary transition-all text-white placeholder:text-text-secondary/30"
+                    className="bg-transparent border-b border-border p-3 focus:outline-none focus:border-primary transition-all text-white placeholder:text-text-secondary/30"
                   />
                 </div>
                 <div className="flex flex-col gap-3">
@@ -161,7 +161,7 @@ export const Contact = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="your@email.com"
-                    className="bg-background/50 border-b border-border p-3 focus:outline-none focus:border-primary transition-all text-white placeholder:text-text-secondary/30"
+                    className="bg-transparent border-b border-border p-3 focus:outline-none focus:border-primary transition-all text-white placeholder:text-text-secondary/30"
                   />
                 </div>
               </div>

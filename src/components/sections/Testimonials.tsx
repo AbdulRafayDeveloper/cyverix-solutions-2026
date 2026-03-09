@@ -108,7 +108,7 @@ export const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <div className="text-center">
           <span className="text-primary font-mono text-sm tracking-[0.3em] uppercase mb-4 block">Testimonials</span>
-          <h2 className="text-4xl md:text-6xl font-syne font-bold">
+          <h2 className="text-3xl md:text-6xl font-syne font-bold">
             What Our <span className="text-gradient">Clients</span> Say
           </h2>
         </div>

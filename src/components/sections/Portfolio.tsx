@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ExternalLink, ArrowRight, Github } from "lucide-react";
 
 const projects = [
@@ -48,10 +49,13 @@ export const Portfolio = () => {
               Engineering <br /> <span className="text-gradient">Masterpieces</span>
             </h2>
           </div>
-          <button className="group flex items-center gap-3 px-10 py-5 rounded-full border border-border hover:border-primary transition-all text-sm font-bold bg-surface/50 backdrop-blur-md">
+          <Link 
+            href="/work"
+            className="group flex items-center gap-3 px-10 py-5 rounded-full border border-border hover:border-primary transition-all text-sm font-bold bg-surface/50 backdrop-blur-md"
+          >
             View All Work 
             <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

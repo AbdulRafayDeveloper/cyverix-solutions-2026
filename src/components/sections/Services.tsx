@@ -57,44 +57,44 @@ const Modal = ({ service, onClose }: { service: any; onClose: () => void }) => {
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
-        className="w-full max-w-2xl bg-surface border border-border p-8 md:p-12 rounded-[3rem] relative shadow-2xl"
+        className="w-full max-w-2xl bg-surface border border-border p-6 md:p-12 rounded-3xl md:rounded-[3rem] relative shadow-2xl overflow-y-auto max-h-[90vh]"
         onClick={e => e.stopPropagation()}
       >
         <button 
           onClick={onClose}
-          className="absolute top-8 right-8 text-text-secondary hover:text-white transition-colors"
+          className="absolute top-4 right-4 md:top-8 md:right-8 text-text-secondary hover:text-white transition-colors z-30"
         >
           <X size={24} />
         </button>
 
-        <div className="flex items-center gap-4 mb-8">
-          <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 md:mb-8">
+          <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
             {service.icon}
           </div>
           <div>
             <span className="text-[10px] font-mono text-primary uppercase tracking-[0.3em]">{service.label}</span>
-            <h3 className="text-3xl font-syne font-bold">{service.title}</h3>
+            <h3 className="text-2xl md:text-3xl font-syne font-bold">{service.title}</h3>
           </div>
         </div>
 
-        <p className="text-text-secondary text-lg leading-relaxed mb-8">
+        <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6 md:mb-8">
           {service.details}
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
           {service.features.map((feature: string) => (
-            <div key={feature} className="flex items-center gap-3 p-4 rounded-2xl bg-background/50 border border-border">
-              <CheckCircle2 size={18} className="text-primary" />
-              <span className="text-sm font-bold text-text-primary">{feature}</span>
+            <div key={feature} className="flex items-center gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-background/50 border border-border">
+              <CheckCircle2 size={18} className="text-primary shrink-0" />
+              <span className="text-xs md:text-sm font-bold text-text-primary">{feature}</span>
             </div>
           ))}
         </div>
 
-        <div className="mt-12">
+        <div className="mt-8 md:mt-12">
           <Link 
             href="#contact"
             onClick={onClose}
-            className="block w-full py-4 bg-cta rounded-2xl font-bold text-background glow-on-hover transition-all text-center"
+            className="block w-full py-3 md:py-4 bg-cta rounded-xl md:rounded-2xl font-bold text-background glow-on-hover transition-all text-center text-sm md:text-base"
           >
             Start a Project with Us
           </Link>

@@ -68,7 +68,12 @@ export const Footer = () => {
           <ul className="flex flex-col gap-4">
             {["Work", "About Us", "Careers", "Contact", "Privacy Policy"].map((link) => (
               <li key={link}>
-                <Link href="#" className="text-sm text-text-secondary hover:text-primary transition-colors">{link}</Link>
+                <Link 
+                  href={link === "Privacy Policy" ? "/privacy-policy" : "#"} 
+                  className="text-sm text-text-secondary hover:text-primary transition-colors"
+                >
+                  {link}
+                </Link>
               </li>
             ))}
           </ul>

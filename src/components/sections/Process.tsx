@@ -47,11 +47,11 @@ export const Process = () => {
         <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-8">
            <div className="max-w-xl">
              <span className="text-primary font-mono text-xs uppercase tracking-[0.5em] mb-4 block">Our Methodology</span>
-             <h2 className="text-5xl md:text-7xl font-syne font-bold tracking-tighter leading-[0.9]">
+             <h2 className="text-4xl md:text-7xl font-syne font-bold tracking-tighter leading-[1] md:leading-[0.9]">
                Atomic <br /> <span className="text-gradient">Workflows.</span>
              </h2>
            </div>
-           <p className="text-text-secondary text-lg max-w-sm leading-relaxed text-right md:text-left">
+           <p className="text-text-secondary text-base md:text-lg max-w-sm leading-relaxed text-left md:text-right">
              From deep discovery to final deployment, our process is optimized for speed, security, and scalability.
            </p>
         </div>

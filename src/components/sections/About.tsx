@@ -33,7 +33,7 @@ export const About = () => {
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-syne font-bold mb-10 tracking-tighter leading-[0.9]"
+            className="text-4xl md:text-7xl font-syne font-bold mb-8 md:mb-10 tracking-tighter leading-[1] md:leading-[0.9]"
           >
             Engineering <br /> <span className="text-gradient">with Purpose.</span>
           </motion.h2>
@@ -41,7 +41,7 @@ export const About = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-text-secondary text-lg mb-12 leading-relaxed max-w-lg"
+            className="text-text-secondary text-base md:text-lg mb-12 leading-relaxed max-w-lg"
           >
             Based in Pakistan, building software for the world. Cyverix Solutions doesn&apos;t just write code — we solve problems. 
             Our mission is to bridge the gap between human ambition and technological possibility through precision engineering.
@@ -66,26 +66,26 @@ export const About = () => {
         </div>
 
         {/* Team Grid (Asymmetric) */}
-        <div className="lg:w-1/2 grid grid-cols-2 gap-4">
+        <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {team.map((member, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1 }}
-              className={`p-8 glass rounded-[2.5rem] flex flex-col items-center text-center group transition-all duration-700 hover:border-primary/30 shadow-xl ${i % 2 === 1 ? 'lg:translate-y-12' : ''}`}
+              className={`p-6 md:p-8 glass rounded-3xl md:rounded-[2.5rem] flex flex-col items-center text-center group transition-all duration-700 hover:border-primary/30 shadow-xl ${i % 2 === 1 ? 'lg:translate-y-12' : ''}`}
             >
-              <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${member.color} ${member.to} flex items-center justify-center mb-6 transition-all group-hover:scale-110 group-hover:rotate-12`}>
-                <span className="text-xl font-syne font-extrabold text-text-primary group-hover:text-primary transition-colors">{member.id}</span>
+              <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br ${member.color} ${member.to} flex items-center justify-center mb-6 transition-all group-hover:scale-110 group-hover:rotate-12`}>
+                <span className="text-lg md:text-xl font-syne font-extrabold text-text-primary group-hover:text-primary transition-colors">{member.id}</span>
               </div>
-              <p className="text-sm font-bold font-syne text-text-primary uppercase tracking-widest mb-4 opacity-80 group-hover:opacity-100">{member.role}</p>
+              <p className="text-xs md:text-sm font-bold font-syne text-text-primary uppercase tracking-widest mb-4 opacity-80 group-hover:opacity-100">{member.role}</p>
               <div className="w-8 h-8 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary hover:text-primary transition-all cursor-pointer">
                 <Linkedin size={14} />
               </div>
             </motion.div>
           ))}
           
-          <div className="p-8 border border-dashed border-border rounded-[2.5rem] flex flex-col items-center justify-center text-center bg-surface/10 lg:translate-y-12">
+          <div className="p-6 md:p-8 border border-dashed border-border rounded-3xl md:rounded-[2.5rem] flex flex-col items-center justify-center text-center bg-surface/10 lg:translate-y-12">
              <span className="text-primary font-bold text-lg mb-2 capitalize italic">Join Us</span>
              <p className="text-[10px] text-text-secondary leading-tight opacity-60">We are always hunting for world-class engineers.</p>
           </div>

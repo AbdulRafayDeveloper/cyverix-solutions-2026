@@ -21,10 +21,10 @@ export const Careers = () => {
         {/* Left Side: Text */}
         <div className="lg:col-span-5">
           <span className="text-primary font-mono text-sm tracking-[0.4em] uppercase mb-6 block">Career Growth</span>
-          <h2 className="text-5xl md:text-7xl font-syne font-bold tracking-tighter leading-[0.9] mb-8">
+          <h2 className="text-4xl md:text-7xl font-syne font-bold tracking-tighter leading-[1] md:leading-[0.9] mb-8">
             Build the <br /> <span className="text-gradient">Unbuildable.</span>
           </h2>
-          <p className="text-text-secondary text-lg mb-12 leading-relaxed max-w-md">
+          <p className="text-text-secondary text-base md:text-lg mb-12 leading-relaxed max-w-md">
             We are not just hiring employees; we are recruiting pioneers. 
             Join a culture where engineering excellence meets limitless curiosity.
           </p>

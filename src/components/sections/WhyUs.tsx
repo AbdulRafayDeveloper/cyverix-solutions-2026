@@ -58,11 +58,11 @@ export const WhyUs = () => {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-syne font-bold mb-8 tracking-tighter leading-[0.9]"
+            className="text-4xl md:text-7xl font-syne font-bold mb-8 tracking-tighter leading-[1] md:leading-[0.9]"
           >
              Building <br /> <span className="text-gradient">Trust by Quality.</span>
           </motion.h2>
-          <p className="text-text-secondary text-lg leading-relaxed">
+          <p className="text-text-secondary text-base md:text-lg leading-relaxed">
             We don&apos;t just build software; we build foundations for growth. Our approach combines technical rigor with business intelligence.
           </p>
         </div>

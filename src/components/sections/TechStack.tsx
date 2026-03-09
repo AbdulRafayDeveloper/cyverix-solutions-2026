@@ -31,11 +31,11 @@ export const TechStack = () => {
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-syne font-bold mb-8 tracking-tighter leading-[0.9]"
+            className="text-4xl md:text-7xl font-syne font-bold mb-8 tracking-tighter leading-[1] md:leading-[0.9]"
           >
             The Tech <br /> <span className="text-gradient">We Master.</span>
           </motion.h2>
-          <p className="text-text-secondary text-lg leading-relaxed">
+          <p className="text-text-secondary text-base md:text-lg leading-relaxed">
             We don&apos;t just use tools; we orchestrate them into high-performance digital architectures.
           </p>
         </div>

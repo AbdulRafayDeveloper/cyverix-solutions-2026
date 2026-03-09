@@ -194,7 +194,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl md:text-8xl lg:text-[10rem] font-syne font-extrabold mb-10 leading-[0.85] tracking-tighter"
+            className="text-5xl md:text-8xl lg:text-[10rem] font-syne font-extrabold mb-8 md:mb-10 leading-[0.9] md:leading-[0.85] tracking-tighter"
           >
             Engineering <br />
             <span className="text-gradient">Human</span> <br />
@@ -205,7 +205,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-2xl text-text-secondary/80 max-w-2xl mx-auto mb-16 font-medium leading-relaxed"
+            className="text-base md:text-2xl text-text-secondary/80 max-w-2xl mx-auto mb-12 md:mb-16 font-medium leading-relaxed px-4 md:px-0"
           >
             Cyverix Solutions builds ultra-scalable AI architectures and complex software ecosystems 
             designed to empower global enterprises.

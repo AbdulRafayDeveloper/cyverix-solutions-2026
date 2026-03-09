@@ -39,8 +39,8 @@ export const Navbar = () => {
         isScrolled ? "glass rounded-3xl px-8 py-3 translate-y-2" : ""
       )}>
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 overflow-hidden rounded-lg">
+        <Link href="/" className="flex items-center gap-3 group shrink-0">
+          <div className="relative w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-lg">
             <Image 
               src="/logo.png" 
               alt="Cyverix Solutions Logo" 
@@ -50,8 +50,11 @@ export const Navbar = () => {
               className="object-contain"
             />
           </div>
-          <span className="text-2xl font-bold font-syne tracking-tight group-hover:text-primary transition-all">
+          <span className="text-lg md:text-2xl font-bold font-syne tracking-tight group-hover:text-primary transition-all hidden sm:block">
             Cyverix Solutions
+          </span>
+          <span className="text-lg font-bold font-syne tracking-tight sm:hidden block">
+            Cyverix
           </span>
         </Link>
 
