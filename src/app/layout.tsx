@@ -70,7 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${syne.variable} ${inter.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="antialiased bg-background text-text-primary selection:bg-primary selection:text-background font-inter">
+      <body className="antialiased bg-background text-text-primary selection:bg-primary selection:text-background font-inter" suppressHydrationWarning>
         {children}
       </body>
     </html>

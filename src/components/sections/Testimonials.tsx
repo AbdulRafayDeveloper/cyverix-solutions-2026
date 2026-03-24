@@ -104,7 +104,7 @@ const TestimonialCard = ({ t }: { t: any }) => (
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-24 bg-background relative overflow-hidden">
+    <section id="testimonials" className="py-24 min-h-screen snap-start snap-always w-full flex flex-col justify-center bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <div className="text-center">
           <span className="text-primary font-mono text-sm tracking-[0.3em] uppercase mb-4 block">Testimonials</span>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/Navbar";
@@ -64,8 +64,8 @@ const CustomCursor = () => {
   );
 };
 
-const ScrollProgress = () => {
-  const { scrollYProgress } = useScroll();
+const ScrollProgress = ({ containerRef }: { containerRef?: React.RefObject<HTMLElement | null> }) => {
+  const { scrollYProgress } = useScroll(containerRef ? { container: containerRef } : undefined);
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -81,9 +81,15 @@ const ScrollProgress = () => {
 };
 
 export default function Home() {
+  const scrollRef = useRef<HTMLElement>(null);
+
   return (
-    <main className="relative min-h-screen">
-      <ScrollProgress />
+    <main
+      id="main-scroll"
+      ref={scrollRef}
+      className="relative h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth no-scrollbar"
+    >
+      <ScrollProgress containerRef={scrollRef} />
       <CustomCursor />
       <Navbar />
       <Hero />

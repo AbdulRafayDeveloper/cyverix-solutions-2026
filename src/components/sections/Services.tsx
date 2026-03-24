@@ -46,21 +46,21 @@ const services = [
 
 const Modal = ({ service, onClose }: { service: any; onClose: () => void }) => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[99999] flex items-center justify-center p-6 bg-black/80 backdrop-blur-xl"
       onClick={onClose}
     >
-      <motion.div 
+      <motion.div
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
         className="w-full max-w-2xl bg-surface border border-border p-6 md:p-12 rounded-3xl md:rounded-[3rem] relative shadow-2xl overflow-y-auto max-h-[90vh]"
         onClick={e => e.stopPropagation()}
       >
-        <button 
+        <button
           onClick={onClose}
           className="absolute top-4 right-4 md:top-8 md:right-8 text-text-secondary hover:text-white transition-colors z-30"
         >
@@ -91,7 +91,7 @@ const Modal = ({ service, onClose }: { service: any; onClose: () => void }) => {
         </div>
 
         <div className="mt-8 md:mt-12">
-          <Link 
+          <Link
             href="#contact"
             onClick={onClose}
             className="block w-full py-3 md:py-4 bg-cta rounded-xl md:rounded-2xl font-bold text-background glow-on-hover transition-all text-center text-sm md:text-base"
@@ -108,8 +108,8 @@ export const Services = () => {
   const [selectedService, setSelectedService] = useState<any>(null);
 
   return (
-    <section id="services" className="py-24 px-6 bg-background relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="py-24 px-6 min-h-screen h-screen w-full snap-start snap-always flex flex-col justify-center bg-alt-section relative overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full">
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
@@ -143,28 +143,28 @@ export const Services = () => {
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-15 transition-opacity pointer-events-none">
                 {React.cloneElement(service.icon as React.ReactElement<{ size: number }>, { size: 140 })}
               </div>
-              
+
               <div className="relative z-10">
                 <div className="mb-8 w-14 h-14 rounded-2xl bg-primary/5 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-colors duration-500">
                   {service.icon}
                 </div>
-                
+
                 <h3 className="text-2xl font-syne font-bold mb-4 group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
-                
+
                 <p className="text-text-secondary leading-relaxed mb-10 group-hover:text-text-primary transition-colors line-clamp-2">
                   {service.description}
                 </p>
-                
-                <button 
+
+                <button
                   className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-[0.2em] group/link"
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelectedService(service);
                   }}
                 >
-                  Learn More 
+                  Learn More
                   <ArrowRight size={18} className="transition-transform group-hover/link:translate-x-1" />
                 </button>
               </div>
@@ -178,9 +178,9 @@ export const Services = () => {
 
       <AnimatePresence>
         {selectedService && (
-          <Modal 
-            service={selectedService} 
-            onClose={() => setSelectedService(null)} 
+          <Modal
+            service={selectedService}
+            onClose={() => setSelectedService(null)}
           />
         )}
       </AnimatePresence>

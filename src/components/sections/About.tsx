@@ -15,12 +15,12 @@ const team = [
 
 export const About = () => {
   return (
-    <section id="about" className="py-32 px-6 relative bg-background overflow-hidden">
+    <section id="about" className="py-32 px-6 min-h-screen snap-start snap-always w-full flex flex-col justify-center relative bg-alt-section overflow-hidden">
       {/* Mesh Background */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 blur-[150px] rounded-full -z-10" />
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20">
-        
+
         {/* Text Section */}
         <div className="lg:w-1/2">
           <motion.span
@@ -43,10 +43,10 @@ export const About = () => {
             transition={{ delay: 0.1 }}
             className="text-text-secondary text-base md:text-lg mb-12 leading-relaxed max-w-lg"
           >
-            Based in Pakistan, building software for the world. Cyverix Solutions doesn&apos;t just write code — we solve problems. 
+            Based in Pakistan, building software for the world. Cyverix Solutions doesn&apos;t just write code — we solve problems.
             Our mission is to bridge the gap between human ambition and technological possibility through precision engineering.
           </motion.p>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-6">
@@ -56,7 +56,7 @@ export const About = () => {
               <p className="text-xs text-text-secondary uppercase tracking-[0.2em] font-mono">Inception</p>
             </div>
             <div>
-               <div className="w-12 h-12 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary mb-6">
                 <Activity size={24} />
               </div>
               <h4 className="text-3xl font-syne font-extrabold text-white mb-2">100+</h4>
@@ -84,10 +84,10 @@ export const About = () => {
               </div>
             </motion.div>
           ))}
-          
+
           <div className="p-6 md:p-8 border border-dashed border-border rounded-3xl md:rounded-[2.5rem] flex flex-col items-center justify-center text-center bg-surface/10 lg:translate-y-12">
-             <span className="text-primary font-bold text-lg mb-2 capitalize italic">Join Us</span>
-             <p className="text-[10px] text-text-secondary leading-tight opacity-60">We are always hunting for world-class engineers.</p>
+            <span className="text-primary font-bold text-lg mb-2 capitalize italic">Join Us</span>
+            <p className="text-[10px] text-text-secondary leading-tight opacity-60">We are always hunting for world-class engineers.</p>
           </div>
         </div>
 

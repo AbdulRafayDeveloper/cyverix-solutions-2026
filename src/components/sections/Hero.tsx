@@ -73,7 +73,7 @@ export const Hero = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      
+
       ctx.lineWidth = 1;
       const connectionDistance = 150;
       for (let i = 0; i < particles.length; i++) {
@@ -81,7 +81,7 @@ export const Hero = () => {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          
+
           if (distance < connectionDistance) {
             ctx.strokeStyle = `rgba(0, 255, 178, ${0.2 * (1 - distance / connectionDistance)})`;
             ctx.beginPath();
@@ -107,97 +107,53 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[110vh] flex flex-col justify-center items-center pt-32 pb-24 overflow-hidden">
+    <section className="relative h-screen min-h-screen w-full snap-start snap-always flex flex-col justify-center items-center px-6 overflow-hidden bg-[#0A0A0F]">
       {/* Background Media */}
       <canvas
         ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full -z-10 opacity-80"
+        className="absolute inset-0 w-full h-full -z-10 opacity-70"
       />
-      
-      {/* Moving Blobs */}
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.2, 1],
-          x: [0, 50, 0],
-          y: [0, -30, 0]
-        }}
+
+      {/* Background Blobs (Adaptive Size) */}
+      <motion.div
+        animate={{ scale: [1, 1.15, 1], x: [0, 20, 0], y: [0, -20, 0] }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full -z-10" 
+        className="absolute top-1/4 -left-1/4 w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] bg-primary/10 blur-[100px] rounded-full -z-10"
       />
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.3, 1],
-          x: [0, -40, 0],
-          y: [0, 60, 0]
-        }}
+      <motion.div
+        animate={{ scale: [1, 1.25, 1], x: [0, -20, 0], y: [0, 40, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-secondary/10 blur-[120px] rounded-full -z-10" 
+        className="absolute bottom-1/4 -right-1/4 w-[45vw] h-[45vw] max-w-[500px] max-h-[500px] bg-secondary/10 blur-[100px] rounded-full -z-10"
       />
 
-      {/* Floating Elements (Desktop only) */}
-      <div className="absolute inset-0 max-w-7xl mx-auto px-6 pointer-events-none hidden lg:block">
+      {/* Content Container (Main Focus) */}
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center relative z-10">
+
+        {/* Superior Branding Label */}
         <motion.div
-           initial={{ opacity: 0, x: -50 }}
-           animate={{ opacity: 1, x: 0 }}
-           transition={{ delay: 1 }}
-           className="absolute top-[20%] right-10 p-6 glass rounded-3xl border-primary/20 backdrop-blur-3xl shadow-2xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="group relative inline-flex items-center gap-4 px-5 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-2xl mb-10 md:mb-14 hover:border-primary/40 transition-all cursor-default"
         >
-          <div className="flex items-center gap-4">
-             <div className="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center text-primary">
-               <Sparkles size={24} />
-             </div>
-             <div>
-               <p className="text-[10px] font-mono text-primary uppercase tracking-widest">Active Engineering</p>
-               <p className="text-xl font-bold font-syne">10+ AI Models</p>
-             </div>
-          </div>
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+          </span>
+          <span className="text-[10px] md:text-[11px] font-mono tracking-[0.3em] uppercase text-text-secondary">
+            Next-Gen AI Engineering
+          </span>
         </motion.div>
 
-        <motion.div
-           initial={{ opacity: 0, x: 50 }}
-           animate={{ opacity: 1, x: 0 }}
-           transition={{ delay: 1.2 }}
-           className="absolute bottom-[30%] left-0 p-6 glass rounded-3xl border-secondary/20 backdrop-blur-3xl shadow-2xl"
-        >
-          <div className="flex items-center gap-4">
-             <div className="w-12 h-12 bg-secondary/20 rounded-2xl flex items-center justify-center text-secondary">
-               <Rocket size={24} />
-             </div>
-             <div>
-               <p className="text-[10px] font-mono text-secondary uppercase tracking-widest">Global Delivery</p>
-               <p className="text-xl font-bold font-syne">100+ Projects</p>
-             </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Content Container */}
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-        <div className="flex flex-col items-center text-center">
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="group relative inline-flex items-center gap-4 px-6 py-2 rounded-full border border-white/5 bg-white/5 backdrop-blur-xl mb-12 hover:border-primary/30 transition-all cursor-pointer overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-text-secondary group-hover:text-primary transition-colors">
-              Pioneering Tomorrow&apos;s Tech Stack
-            </span>
-          </motion.div>
-
+        {/* Hero Headline (Responsive Clamped Size) */}
+        <div className="text-center w-full max-w-6xl pb-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-8xl lg:text-[10rem] font-syne font-extrabold mb-8 md:mb-10 leading-[0.9] md:leading-[0.85] tracking-tighter"
+            className="text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] font-syne font-extrabold mb-8 leading-[1.1] md:leading-[1.0] tracking-tight md:tracking-tighter"
           >
-            Engineering <br />
-            <span className="text-gradient">Human</span> <br />
+            Engineering <br className="hidden sm:block" />
+            <span className="text-gradient">Human</span> <br className="hidden sm:block" />
             Advantage.
           </motion.h1>
 
@@ -205,46 +161,77 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base md:text-2xl text-text-secondary/80 max-w-2xl mx-auto mb-12 md:mb-16 font-medium leading-relaxed px-4 md:px-0"
+            className="text-sm sm:text-lg md:text-xl lg:text-2xl text-text-secondary/90 max-w-3xl mx-auto mb-12 md:mb-16 font-medium leading-relaxed balance"
           >
-            Cyverix Solutions builds ultra-scalable AI architectures and complex software ecosystems 
-            designed to empower global enterprises.
+            Building ultra-scalable AI architectures and complex software ecosystems designed
+            to redefine world-class enterprises.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8"
           >
-            <Link 
+            <Link
               href="#portfolio"
-              className="group relative px-10 py-5 bg-cta rounded-2xl font-bold text-background glow-on-hover flex items-center gap-3 transition-all hover:scale-[1.05]"
+              className="group relative w-full sm:w-auto px-10 py-5 bg-cta rounded-2xl font-bold text-background glow-on-hover flex items-center justify-center gap-3 transition-transform hover:scale-[1.05]"
             >
-              <span className="relative z-10">Explore Our Work</span>
-              <MoveRight className="relative z-10 transition-transform group-hover:translate-x-1" size={22} />
+              Explore Our Work
+              <MoveRight className="transition-transform group-hover:translate-x-1.5" size={22} />
             </Link>
-            <Link 
+            <Link
               href="#contact"
-              className="px-10 py-5 rounded-2xl border border-white/10 hover:border-primary/50 text-text-primary font-bold transition-all bg-white/5 backdrop-blur-md hover:bg-white/10"
+              className="w-full sm:w-auto px-10 py-5 rounded-2xl border border-white/10 hover:border-primary/50 text-text-primary font-bold transition-all bg-white/5 backdrop-blur-sm hover:bg-white/10 flex items-center justify-center"
             >
               Consult an Engineer
             </Link>
           </motion.div>
-
         </div>
+      </div>
+
+      {/* Global Status Indicators (Floating Sidebar-style) */}
+      <div className="absolute inset-x-0 bottom-24 max-w-7xl mx-auto px-8 pointer-events-none hidden xl:flex justify-between items-end">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 0.8, x: 0 }}
+          transition={{ delay: 1.2 }}
+          className="p-5 glass rounded-2xl border-white/5 flex items-center gap-4"
+        >
+          <div className="w-10 h-10 bg-secondary/20 rounded-xl flex items-center justify-center text-secondary">
+            <Rocket size={20} />
+          </div>
+          <div>
+            <p className="text-[9px] font-mono text-secondary uppercase tracking-widest">Global Status</p>
+            <p className="text-lg font-bold font-syne">100+ Projects</p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 0.8, x: 0 }}
+          transition={{ delay: 1 }}
+          className="p-5 glass rounded-2xl border-white/5 flex items-center gap-4"
+        >
+          <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
+            <Sparkles size={20} />
+          </div>
+          <div>
+            <p className="text-[9px] font-mono text-primary uppercase tracking-widest">AI Readiness</p>
+            <p className="text-lg font-bold font-syne">10+ Active Models</p>
+          </div>
+        </motion.div>
       </div>
 
       {/* Scroll Down Hint */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-12 flex flex-col items-center gap-4"
+        transition={{ delay: 2.2 }}
+        className="absolute bottom-10 flex flex-col items-center gap-4"
       >
-        <div className="w-[1px] h-20 bg-gradient-to-b from-primary/50 to-transparent" />
+        <div className="w-[1px] h-12 md:h-16 bg-gradient-to-b from-primary/50 to-transparent" />
       </motion.div>
-
     </section>
   );
 };

@@ -9,9 +9,8 @@ const Toast = ({ message, type, onClose }: { message: string, type: "success" | 
     initial={{ opacity: 0, y: 50, scale: 0.9 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
     exit={{ opacity: 0, y: 20, scale: 0.9 }}
-    className={`fixed bottom-10 left-1/2 -translate-x-1/2 z-[1000002] px-8 py-4 rounded-2xl glass border flex items-center gap-4 shadow-2xl min-w-[320px] ${
-      type === "success" ? "border-primary/40 bg-primary/5" : "border-red-500/40 bg-red-500/5"
-    }`}
+    className={`fixed bottom-10 left-1/2 -translate-x-1/2 z-[1000002] px-8 py-4 rounded-2xl glass border flex items-center gap-4 shadow-2xl min-w-[320px] ${type === "success" ? "border-primary/40 bg-primary/5" : "border-red-500/40 bg-red-500/5"
+      }`}
   >
     {type === "success" ? <CheckCircle2 className="text-primary" /> : <AlertCircle className="text-red-500" />}
     <p className="text-sm font-bold tracking-tight">{message}</p>
@@ -67,7 +66,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 relative overflow-hidden bg-background">
+    <section id="contact" className="py-32 px-6 min-h-screen snap-start w-full flex flex-col justify-center relative overflow-hidden bg-alt-section">
       {/* Background Glows */}
       <div className="absolute -top-24 -right-24 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-[600px] h-[600px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
@@ -96,7 +95,7 @@ export const Contact = () => {
               transition={{ delay: 0.1 }}
               className="text-base md:text-lg max-w-md mb-12 leading-relaxed"
             >
-              Whether you have a fully formed idea or just a spark of inspiration, 
+              Whether you have a fully formed idea or just a spark of inspiration,
               we&apos;re here to engineer it into reality.
             </motion.p>
 
@@ -174,11 +173,10 @@ export const Contact = () => {
                       key={s}
                       type="button"
                       onClick={() => setFormData({ ...formData, service: s })}
-                      className={`px-4 py-2 rounded-full text-xs font-bold border transition-all ${
-                        formData.service === s 
-                        ? "bg-primary text-background border-primary shadow-[0_0_20px_rgba(0,255,178,0.3)]" 
+                      className={`px-4 py-2 rounded-full text-xs font-bold border transition-all ${formData.service === s
+                        ? "bg-primary text-background border-primary shadow-[0_0_20px_rgba(0,255,178,0.3)]"
                         : "border-border text-text-secondary hover:border-text-secondary"
-                      }`}
+                        }`}
                     >
                       {s}
                     </button>
@@ -215,7 +213,7 @@ export const Contact = () => {
                   {status === "loading" ? "SENDING..." : status === "success" ? "MESSAGE SENT" : "IGNITE PROJECT"}
                 </span>
               </button>
-              
+
               {status === "error" && (
                 <p className="text-center text-red-400 text-xs font-mono">SYSTEM_ERROR: Please try again later.</p>
               )}
@@ -225,8 +223,8 @@ export const Contact = () => {
       </div>
       <AnimatePresence>
         {showToast && (
-          <Toast 
-            message={status === "success" ? "Transmission Successful. Our engineers will follow up." : "System Error. Protocol Breach Detected."} 
+          <Toast
+            message={status === "success" ? "Transmission Successful. Our engineers will follow up." : "System Error. Protocol Breach Detected."}
             type={status === "success" ? "success" : "error"}
             onClose={() => setShowToast(false)}
           />

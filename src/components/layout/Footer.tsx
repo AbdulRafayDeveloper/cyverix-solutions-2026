@@ -1,13 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, Linkedin, Facebook, Github, Instagram, Twitter } from "lucide-react";
 
 export const Footer = () => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
-    <footer className="bg-background pt-24 pb-8 px-6 border-t border-border/50 relative">
+    <footer className="bg-background pt-24 pb-8 px-6 border-t border-border/50 relative snap-start w-full">
       {/* Animated gradient line at top */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
 
@@ -16,9 +19,9 @@ export const Footer = () => {
         <div className="flex flex-col gap-6">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-8 h-8 overflow-hidden rounded-md">
-              <Image 
-                src="/logo.png" 
-                alt="Cyverix Solutions Logo" 
+              <Image
+                src="/logo.png"
+                alt="Cyverix Solutions Logo"
                 fill
                 className="object-contain"
               />
@@ -28,22 +31,22 @@ export const Footer = () => {
             </span>
           </Link>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Engineering the future of digital products since 2023. 
+            Engineering the future of digital products since 2023.
             Boutique software house building world-class SaaS, AI solutions, and apps.
           </p>
           <div className="flex gap-4">
-            <a 
-              href="https://www.linkedin.com/company/cyverix-solutions" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.linkedin.com/company/cyverix-solutions"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 border border-border rounded-lg flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-all"
             >
               <Linkedin size={18} />
             </a>
-            <a 
-              href="https://facebook.com/cyverix" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://facebook.com/cyverix"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 border border-border rounded-lg flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-all"
             >
               <Facebook size={18} />
@@ -68,8 +71,8 @@ export const Footer = () => {
           <ul className="flex flex-col gap-4">
             {["Work", "About Us", "Careers", "Contact", "Privacy Policy"].map((link) => (
               <li key={link}>
-                <Link 
-                  href={link === "Privacy Policy" ? "/privacy-policy" : "#"} 
+                <Link
+                  href={link === "Privacy Policy" ? "/privacy-policy" : "#"}
                   className="text-sm text-text-secondary hover:text-primary transition-colors"
                 >
                   {link}
@@ -109,7 +112,7 @@ export const Footer = () => {
 
       <div className="max-w-7xl mx-auto pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
         <p className="text-xs text-text-secondary">
-          © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Cyverix Solutions. All rights reserved.
+          © <span>{mounted ? new Date().getFullYear() : 2026}</span> Cyverix Solutions. All rights reserved.
         </p>
       </div>
     </footer>

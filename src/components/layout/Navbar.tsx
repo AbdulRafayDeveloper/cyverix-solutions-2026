@@ -20,11 +20,13 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    const container = document.getElementById("main-scroll") || window;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrollY = container === window ? window.scrollY : (container as HTMLElement).scrollTop;
+      setIsScrolled(scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -41,9 +43,9 @@ export const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group shrink-0">
           <div className="relative w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-lg">
-            <Image 
-              src="/logo.png" 
-              alt="Cyverix Solutions Logo" 
+            <Image
+              src="/logo.png"
+              alt="Cyverix Solutions Logo"
               width={40}
               height={40}
               priority
