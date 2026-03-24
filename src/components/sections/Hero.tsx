@@ -107,7 +107,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-screen min-h-screen w-full snap-start snap-always flex flex-col justify-center items-center px-6 overflow-hidden bg-[#0A0A0F]">
+    <section className="relative min-h-screen w-full snap-start snap-always flex flex-col justify-center items-center px-6 overflow-hidden bg-[#0A0A0F] py-20">
       {/* Background Media */}
       <canvas
         ref={canvasRef}
@@ -127,30 +127,15 @@ export const Hero = () => {
       />
 
       {/* Content Container (Main Focus) */}
-      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center relative z-10">
-
-        {/* Superior Branding Label */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="group relative inline-flex items-center gap-4 px-5 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-2xl mb-10 md:mb-14 hover:border-primary/40 transition-all cursor-default"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-          </span>
-          <span className="text-[10px] md:text-[11px] font-mono tracking-[0.3em] uppercase text-text-secondary">
-            Next-Gen AI Engineering
-          </span>
-        </motion.div>
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center relative z-10 flex-1">
 
         {/* Hero Headline (Responsive Clamped Size) */}
-        <div className="text-center w-full max-w-6xl pb-4">
+        <div className="text-center w-full max-w-6xl py-8 md:py-12">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] font-syne font-extrabold mb-8 leading-[1.1] md:leading-[1.0] tracking-tight md:tracking-tighter"
+            className="text-[clamp(2.2rem,8vw,7.5rem)] font-syne font-extrabold mb-6 md:mb-8 leading-[1.1] md:leading-[1.0] tracking-tight md:tracking-tighter"
           >
             Engineering <br className="hidden sm:block" />
             <span className="text-gradient">Human</span> <br className="hidden sm:block" />
@@ -161,7 +146,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-sm sm:text-lg md:text-xl lg:text-2xl text-text-secondary/90 max-w-3xl mx-auto mb-12 md:mb-16 font-medium leading-relaxed balance"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-text-secondary/90 max-w-2xl mx-auto mb-6 md:mb-10 font-medium leading-relaxed"
           >
             Building ultra-scalable AI architectures and complex software ecosystems designed
             to redefine world-class enterprises.
@@ -171,18 +156,18 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6"
           >
             <Link
               href="#portfolio"
-              className="group relative w-full sm:w-auto px-10 py-5 bg-cta rounded-2xl font-bold text-background glow-on-hover flex items-center justify-center gap-3 transition-transform hover:scale-[1.05]"
+              className="group relative w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 bg-cta rounded-2xl font-bold text-background glow-on-hover flex items-center justify-center gap-3 transition-transform hover:scale-[1.05]"
             >
               Explore Our Work
-              <MoveRight className="transition-transform group-hover:translate-x-1.5" size={22} />
+              <MoveRight className="transition-transform group-hover:translate-x-1.5" size={20} />
             </Link>
             <Link
               href="#contact"
-              className="w-full sm:w-auto px-10 py-5 rounded-2xl border border-white/10 hover:border-primary/50 text-text-primary font-bold transition-all bg-white/5 backdrop-blur-sm hover:bg-white/10 flex items-center justify-center"
+              className="w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 rounded-2xl border border-white/10 hover:border-primary/50 text-text-primary font-bold transition-all bg-white/5 backdrop-blur-sm hover:bg-white/10 flex items-center justify-center"
             >
               Consult an Engineer
             </Link>

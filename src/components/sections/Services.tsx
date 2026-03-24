@@ -108,7 +108,7 @@ export const Services = () => {
   const [selectedService, setSelectedService] = useState<any>(null);
 
   return (
-    <section id="services" className="py-24 px-6 min-h-screen h-screen w-full snap-start snap-always flex flex-col justify-center bg-alt-section relative overflow-hidden">
+    <section id="services" className="py-24 px-6 min-h-screen w-full snap-start snap-always flex flex-col justify-center bg-alt-section relative overflow-hidden">
       <div className="max-w-7xl mx-auto w-full">
         <div className="text-center mb-16">
           <motion.span
