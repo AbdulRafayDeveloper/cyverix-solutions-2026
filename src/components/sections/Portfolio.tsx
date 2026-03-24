@@ -50,7 +50,7 @@ export const Portfolio = () => {
             </h2>
           </div>
           <Link
-            href="/work"
+            href="/case-studies"
             className="group flex items-center gap-3 px-10 py-5 rounded-full border border-border hover:border-primary transition-all text-sm font-bold bg-surface/50 backdrop-blur-md"
           >
             View All Work

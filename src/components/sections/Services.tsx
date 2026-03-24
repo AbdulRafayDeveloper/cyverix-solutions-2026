@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Globe, Cpu, Bot, Smartphone, ArrowRight, X, CheckCircle2 } from "lucide-react";
+import { Globe, Cpu, Bot, Smartphone, ArrowRight, X, CheckCircle2, Settings, Layers, Layout } from "lucide-react";
 
 const services = [
   {
@@ -17,7 +17,7 @@ const services = [
   },
   {
     icon: <Cpu className="text-primary" size={32} />,
-    title: "Software Developement",
+    title: "Software Development",
     description: "Enterprise SaaS platforms and robust business tools engineered for massive scale and reliability.",
     label: "SAAS",
     details: "We build enterprise-grade SaaS platforms and ERP systems designed to handle thousands of concurrent users. Our focus is on database integrity, secure authentication, and cloud scalability.",
@@ -26,7 +26,7 @@ const services = [
   },
   {
     icon: <Bot className="text-primary" size={32} />,
-    title: "Ai solution",
+    title: "AI Solutions",
     description: "Smart automation, NLP tools, and AI integrations that save time and optimize decision-making.",
     label: "AI",
     details: "Cyverix Solutions leverages cutting-edge NLP and computer vision models to automate manual workflows. We integrate OpenAI, Anthropic, and custom LLM solutions directly into your business logic.",
@@ -34,13 +34,40 @@ const services = [
     color: "#00FFB2"
   },
   {
+    icon: <Settings className="text-primary" size={32} />,
+    title: "Automation Systems",
+    description: "End-to-end business process automation that reduces overhead and human error.",
+    label: "AUTO",
+    details: "We design custom automation pipelines that connect your existing tools and databases. From simple cron jobs to complex self-healing systems, we make your business run on autopilot.",
+    features: ["Workflow Engineering", "Tool Integration", "Error Handling", "Performance Monitoring", "System Scalability"],
+    color: "#7B5EA7"
+  },
+  {
+    icon: <Layers className="text-primary" size={32} />,
+    title: "DevOps & Cloud",
+    description: "Infrastructure as code and CI/CD pipelines for seamless, secure deployments.",
+    label: "INFRA",
+    details: "Our DevOps engineers ensure your applications are always online. We specialize in Docker, Kubernetes, and AWS/Azure cloud architectures, providing maximum uptime and security.",
+    features: ["Docker & K8s", "CI/CD Pipelines", "AWS/Vercel Ops", "Security Auditing", "Infrastructure Scaling"],
+    color: "#00FFB2"
+  },
+  {
+    icon: <Layout className="text-primary" size={32} />,
+    title: "UI/UX Design",
+    description: "User-centric designs that blend aesthetic beauty with functional precision.",
+    label: "DESIGN",
+    details: "We create immersive digital experiences through meticulous UI/UX research and prototyping. Our designs focus on user psychology and brand identity to drive engagement.",
+    features: ["User Research", "Wireframing", "High-Fidelity Prototyping", "Design Systems", "Motion Design"],
+    color: "#7B5EA7"
+  },
+  {
     icon: <Smartphone className="text-primary" size={32} />,
-    title: "Mobile App",
+    title: "Mobile Apps",
     description: "Native and cross-platform apps for iOS & Android with buttery-smooth user experiences.",
     label: "APPS",
     details: "We deliver high-fidelity mobile applications using React Native and Flutter. Our apps bridge the gap between performance and reach, ensuring a consistent look across all devices.",
     features: ["iOS & Android Native", "Offline Functionality", "Push Notifications", "App Store Compliance", "Real-time Syncing"],
-    color: "#7B5EA7"
+    color: "#00FFB2"
   },
 ];
 

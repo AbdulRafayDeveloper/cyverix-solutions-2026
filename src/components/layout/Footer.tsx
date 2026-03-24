@@ -60,7 +60,7 @@ export const Footer = () => {
           <ul className="flex flex-col gap-4">
             {["Web Development", "Web-Based Software", "AI Solutions", "Mobile App Development", "UI/UX Design"].map((link) => (
               <li key={link}>
-                <Link href="#" className="text-sm text-text-secondary hover:text-primary transition-colors">{link}</Link>
+                <Link href="/#services" className="text-sm text-text-secondary hover:text-primary transition-colors">{link}</Link>
               </li>
             ))}
           </ul>
@@ -69,13 +69,19 @@ export const Footer = () => {
         <div>
           <h4 className="font-syne font-bold mb-6">Company</h4>
           <ul className="flex flex-col gap-4">
-            {["Work", "About Us", "Careers", "Contact", "Privacy Policy"].map((link) => (
-              <li key={link}>
+            {[
+              { name: "Work", href: "/case-studies" },
+              { name: "About Us", href: "/about" },
+              { name: "Careers", href: "/careers" },
+              { name: "Contact", href: "/#contact" },
+              { name: "Privacy Policy", href: "/privacy-policy" }
+            ].map((link) => (
+              <li key={link.name}>
                 <Link
-                  href={link === "Privacy Policy" ? "/privacy-policy" : "#"}
+                  href={link.href}
                   className="text-sm text-text-secondary hover:text-primary transition-colors"
                 >
-                  {link}
+                  {link.name}
                 </Link>
               </li>
             ))}

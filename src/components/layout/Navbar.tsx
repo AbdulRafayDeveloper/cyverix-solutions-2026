@@ -8,11 +8,12 @@ import { Menu, X, Rocket } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Services", href: "#services" },
-  { name: "Work", href: "#portfolio" },
-  { name: "About", href: "#about" },
-  { name: "Careers", href: "#careers" },
-  { name: "Contact", href: "#contact" },
+  { name: "Services", href: "/#services" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "Work", href: "/#portfolio" },
+  { name: "About", href: "/about" },
+  { name: "Careers", href: "/careers" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export const Navbar = () => {
@@ -75,7 +76,7 @@ export const Navbar = () => {
             </Link>
           ))}
           <Link
-            href="#contact"
+            href="/#contact"
             className="px-8 py-3 bg-cta text-background font-bold rounded-full text-xs uppercase tracking-widest glow-on-hover transition-all"
           >
             Start a Project
@@ -112,7 +113,7 @@ export const Navbar = () => {
                 </Link>
               ))}
               <Link
-                href="#contact"
+                href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-4 bg-cta text-center text-background font-bold rounded-xl glow-on-hover"
               >
