@@ -1,6 +1,6 @@
 {
-  "name": "cyverix-solutions-2024",
-  "version": "0.1.0",
+  "name": "Cyverix Solutions",
+  "version": "1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
