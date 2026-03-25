@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Cyverix Solutions",
   },
   description:
-    `Cyverix Solutions builds web apps, SaaS, and AI features for teams worldwide. Based in ${SITE_LOCATION_DISPLAY}. Founded in 2023.`,
+    `Cyverix Solutions builds web apps, SaaS, and production-ready AI for teams worldwide: LLM integrations, automation, and intelligent features. Based in ${SITE_LOCATION_DISPLAY}. Founded in 2023.`,
   keywords: [
     "Cyverix Solutions",
     "Software House Faisalabad",
@@ -45,16 +45,25 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Cyverix Solutions | Software and AI development",
-    description: `Web apps, SaaS, and AI work from ${SITE_LOCATION_DISPLAY}. Clear delivery for teams that need software they can run in production.`,
+    description: `Web apps, SaaS, and production AI from ${SITE_LOCATION_DISPLAY}. LLM integrations, automation, and software you can run in production.`,
     url: SITE_URL,
     siteName: "Cyverix Solutions",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Cyverix Solutions logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cyverix Solutions | Software and AI development",
     description: `Web apps, SaaS, and AI from Faisalabad, Punjab. Practical builds for real products.`,
+    images: ["/twitter-image"],
   },
   icons: {
     icon: [{ url: "/cyverix-logo.svg", type: "image/svg+xml" }],
@@ -69,7 +78,7 @@ const orgJsonLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/cyverix-logo.svg`,
   description:
-    "Software and AI studio building web apps, SaaS, and integrations for teams worldwide.",
+    "Software and AI studio building web apps, SaaS, and production-ready AI for teams worldwide: LLM integrations, automation, and intelligent products.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Faisalabad",

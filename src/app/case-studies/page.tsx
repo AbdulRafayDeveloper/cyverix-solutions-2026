@@ -105,7 +105,9 @@ export default function CaseStudiesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-text-secondary text-base md:text-lg max-w-2xl leading-relaxed mb-8"
               >
-                These are real products we’ve built and launched ranging from SaaS and AI to marketplaces and education tools. Each one breaks down the problem, our approach, and what actually went live in simple, easy-to-scan language.
+                These are real products we have built and launched: SaaS, AI-heavy platforms, marketplaces, education tools, and more. Much of our
+                work pairs solid engineering with LLMs, automation, and intelligent features. Each story breaks down the problem, our approach, and what
+                went live, in simple language you can skim in a few minutes.
               </motion.p>
 
               <motion.div

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { viewTransition, viewViewport } from "@/lib/motion";
 import { DEFAULT_SERVICE, SERVICE_OPTIONS, type ServiceOption } from "@/lib/service-options";
 import { Phone, Radio, Send, CheckCircle2, Loader2, AlertCircle, Sparkles, Lock } from "lucide-react";
-import { SITE_PHONE_DISPLAY } from "@/lib/site";
+import { SITE_PHONE_DISPLAY, SITE_WHATSAPP_URL } from "@/lib/site";
 
 const Toast = ({
   message,
@@ -158,7 +158,7 @@ export const Contact = () => {
         <hr className="section-flow-divider mb-12 md:mb-16 opacity-80" aria-hidden />
 
         <div className="flex flex-col lg:flex-row lg:items-stretch gap-12 lg:gap-0">
-          {/* Left: headline + channels — aligned to full column height */}
+          {/* Left: headline + channels (aligned to full column height) */}
           <div className="flex flex-col lg:w-[min(100%,440px)] xl:w-[42%] lg:min-h-[560px] lg:justify-between gap-10 lg:gap-12 lg:pr-8 xl:pr-12 lg:border-r lg:border-white/[0.08]">
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -192,7 +192,7 @@ export const Contact = () => {
                 transition={{ ...viewTransition, delay: 0.08 }}
                 className="text-base md:text-lg max-w-md leading-relaxed text-text-secondary/95"
               >
-                Whether you have a full brief or a rough idea, we can help you turn it into working software.
+                Whether you have a full brief or a rough idea (web, mobile, or AI-heavy), we can help you turn it into working software your clients will actually use.
               </motion.p>
             </div>
 
@@ -225,7 +225,7 @@ export const Contact = () => {
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
                   <span className="text-text-secondary/90 shrink-0 text-xs">wa ›</span>
                   <a
-                    href={`https://wa.me/${SITE_PHONE_DISPLAY.replace(/\D/g, "")}`}
+                    href={SITE_WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-sans font-bold text-base text-text-primary hover:text-secondary transition-colors inline-flex items-center gap-2"

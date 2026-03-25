@@ -16,7 +16,8 @@ const steps = [
     number: "02",
     icon: <Layers size={24} />,
     title: "Strategy and architecture",
-    description: "We sketch the architecture and a rough roadmap. You see the stack choices and how we expect the system to grow.",
+    description:
+      "We sketch the architecture and a rough roadmap, including where AI services, APIs, and human-in-the-loop steps fit. You see the stack choices and how we expect the system to grow.",
   },
   {
     number: "03",

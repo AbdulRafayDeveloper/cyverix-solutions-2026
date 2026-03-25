@@ -9,12 +9,12 @@ import { Footer } from "@/components/layout/Footer";
 import { SERVICES } from "@/lib/services";
 import { getServiceIcon } from "@/lib/service-icons";
 import { viewTransition, viewViewport } from "@/lib/motion";
-import { ArrowRight, CheckCircle2, HeartHandshake, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Brain, CheckCircle2, HeartHandshake, Sparkles, Zap } from "lucide-react";
 
 const heroChips = [
+  { label: "AI & LLM integrations", icon: Brain },
   { label: "Web & SaaS", icon: Zap },
-  { label: "Apps & desktop", icon: Sparkles },
-  { label: "Clear handoffs", icon: HeartHandshake },
+  { label: "Apps & clear handoffs", icon: HeartHandshake },
 ] as const;
 
 export default function ServicesPage() {
@@ -52,7 +52,8 @@ export default function ServicesPage() {
                 <span className="text-gradient">products that ship</span>
               </h1>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-                From the first sketch to real-world production traffic, we build websites, SaaS platforms, mobile and desktop apps, automation systems, cloud solutions, and product designs. You can explore a specific area or read through everything from start to finish.
+                From the first sketch to real-world production traffic, we build websites, SaaS platforms, mobile and desktop apps, automation, cloud,
+                product design, and AI features your users can rely on, including assistants, pipelines, and guardrails. Explore one lane or read the full list.
               </p>
               <ul className="flex flex-wrap justify-center lg:justify-start gap-2.5 md:gap-3" aria-label="Highlights">
                 {heroChips.map(({ label, icon: ChipIcon }) => (

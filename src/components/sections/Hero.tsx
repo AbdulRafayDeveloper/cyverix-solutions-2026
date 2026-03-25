@@ -73,7 +73,7 @@ export const Hero = () => {
             transition={{ duration: 0.32, delay: 0.02, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-primary/90 font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] mb-5 sm:mb-6"
           >
-            Cyverix Solutions, software and AI engineering
+            Software and AI engineering, built for real users
           </motion.p>
 
           <motion.h1
@@ -103,8 +103,8 @@ export const Hero = () => {
             className="text-white/75 text-base sm:text-lg md:text-xl max-w-xl leading-relaxed font-medium mb-8 sm:mb-10 md:mb-12"
           >
             We help you ship{" "}
-            <span className="text-highlight-keyword">AI systems and software</span> that stay reliable as you grow. Clear builds,
-            honest timelines, and code your own team can work with later.
+            <span className="text-highlight-keyword">AI systems and software</span> that stay reliable as you grow, from LLM integrations and
+            copilots to full-stack products. Clear builds, honest timelines, and code your own team can work with later.
           </motion.p>
 
           <motion.div

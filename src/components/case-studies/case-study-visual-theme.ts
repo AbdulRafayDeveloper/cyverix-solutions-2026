@@ -12,7 +12,7 @@ export type CaseStudyVisualTheme =
   | "creative-mobile"
   | "default";
 
-/** Deterministic theme from project context — drives layout + iconography inside the SVG. */
+/** Deterministic theme from project context; drives layout and iconography inside the SVG. */
 export function getCaseStudyVisualTheme(
   study: Pick<import("@/data/case-studies").CaseStudy, "id" | "category" | "industry" | "title" | "visualTheme">
 ): CaseStudyVisualTheme {
@@ -38,7 +38,7 @@ export function getCaseStudyVisualTheme(
   return "default";
 }
 
-/** Stable HSL accents per project id — stays on-brand (cyan / violet family). */
+/** Stable HSL accents per project id; stays on-brand (cyan and violet family). */
 export function getCaseStudyPalette(id: string): {
   primary: string;
   secondary: string;
@@ -52,7 +52,7 @@ export function getCaseStudyPalette(id: string): {
     h = Math.imul(h, 16777619);
   }
   const u = Math.abs(h);
-  const hue1 = 155 + (u % 28); /* ~155–182: teal–cyan */
+  const hue1 = 155 + (u % 28); /* ~155 to 182: teal to cyan */
   const hue2 = 265 + ((u >> 3) % 22); /* purple range */
   const sat = 62 + (u % 12);
   const light = 48 + (u % 8);

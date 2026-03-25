@@ -263,7 +263,7 @@ code,
   }
 }
 
-/* Selection — brand-tinted, readable on dark UI */
+/* Selection: brand-tinted, readable on dark UI */
 ::selection {
   background-color: color-mix(in srgb, var(--primary) 32%, transparent);
   color: var(--text-primary);
@@ -294,7 +294,7 @@ code,
   transform: scaleX(1);
 }
 
-/* Primary CTA / button lift — transform + shadow only */
+/* Primary CTA / button lift: transform and shadow only */
 .btn-polish {
   transition:
     transform 0.22s cubic-bezier(0.25, 0.1, 0.25, 1) 0.04s,
@@ -314,7 +314,7 @@ code,
   transform: translateY(0);
 }
 
-/* Soft press ripple — opacity + transform on ::after */
+/* Soft press ripple: opacity and transform on ::after */
 .btn-ripple {
   position: relative;
   overflow: hidden;
@@ -351,7 +351,7 @@ code,
   }
 }
 
-/* Content images — subtle zoom on hover (also: .group:hover .img-hover-zoom) */
+/* Content images: subtle zoom on hover (also .group:hover .img-hover-zoom) */
 .img-hover-zoom {
   transition: transform 0.28s cubic-bezier(0.25, 0.1, 0.25, 1);
   will-change: transform;
@@ -362,7 +362,7 @@ code,
   transform: scale(1.035);
 }
 
-/* Cards — border / shadow transitions */
+/* Cards: border and shadow transitions */
 .card-polish {
   transition:
     border-color 0.22s ease,
@@ -406,7 +406,7 @@ code,
   }
 }
 
-/* Icons — tiny translate on hover (parent group optional) */
+/* Icons: tiny translate on hover (parent group optional) */
 .icon-hover-nudge {
   transition: transform 0.22s cubic-bezier(0.25, 0.1, 0.25, 1) 0.05s;
 }
@@ -534,7 +534,7 @@ code,
   margin-top: 0.35rem;
 }
 
-/* Section rhythm — subtle separator (non-structural) */
+/* Section rhythm: subtle separator (non-structural) */
 .section-flow-divider {
   width: 100%;
   max-width: 72rem;
@@ -646,7 +646,7 @@ code,
   border-radius: 0 0 2px 0;
 }
 
-/* Services page — hero atmosphere */
+/* Services page: hero atmosphere */
 .services-hero-mesh {
   background-image:
     radial-gradient(ellipse 90% 55% at 50% -25%, rgba(0, 255, 178, 0.14), transparent 52%),
@@ -654,7 +654,7 @@ code,
     radial-gradient(ellipse 50% 40% at 0% 80%, rgba(0, 255, 178, 0.06), transparent 45%);
 }
 
-/* About page — engineering bento mesh */
+/* About page: engineering bento mesh */
 .about-spec-mesh {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),

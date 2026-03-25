@@ -44,7 +44,7 @@ export const TechStack = () => {
             transition={viewTransition}
             className="text-primary font-mono text-xs uppercase tracking-[0.45em] mb-4 block"
           >
-            Our Ecosystem
+            Stack & AI tooling
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
@@ -62,7 +62,7 @@ export const TechStack = () => {
             transition={{ ...viewTransition, delay: 0.08 }}
             className="text-text-secondary text-sm sm:text-base md:text-lg leading-relaxed"
           >
-            One place to see what we work with. No sideways scroll.
+            From web stacks to LLM providers and vector tooling, this is one place to see what we ship with. No sideways scroll.
           </motion.p>
         </div>
 

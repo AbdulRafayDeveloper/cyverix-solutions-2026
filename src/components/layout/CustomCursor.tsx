@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 /**
- * Global custom cursor — must render from root layout because `body` uses `cursor: none`
+ * Global custom cursor: must render from root layout because `body` uses `cursor: none`
  * in globals.css; without this, non-home routes would have no visible pointer.
  */
 export function CustomCursor() {

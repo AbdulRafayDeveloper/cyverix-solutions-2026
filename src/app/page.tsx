@@ -25,6 +25,9 @@ const TechStack = dynamic(() => import("@/components/sections/TechStack").then((
 const Testimonials = dynamic(() => import("@/components/sections/Testimonials").then((m) => m.Testimonials), {
   loading: () => sectionSkeleton,
 });
+const TimeZoneBand = dynamic(() => import("@/components/sections/TimeZoneBand").then((m) => m.TimeZoneBand), {
+  loading: () => sectionSkeleton,
+});
 const About = dynamic(() => import("@/components/sections/About").then((m) => m.About), { loading: () => sectionSkeleton });
 const Contact = dynamic(() => import("@/components/sections/Contact").then((m) => m.Contact), { loading: () => sectionSkeleton });
 const Footer = dynamic(() => import("@/components/layout/Footer").then((m) => m.Footer), { loading: () => <div className="h-32 skeleton-section rounded-none" aria-hidden /> });
@@ -59,6 +62,7 @@ export default function Home() {
       <Process />
       <TechStack />
       <Testimonials />
+      <TimeZoneBand />
       <About />
       <Contact />
       <Footer />

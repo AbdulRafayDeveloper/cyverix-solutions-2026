@@ -74,7 +74,7 @@ export const About = () => {
               transition={{ ...viewTransition, delay: 0.08 }}
               className="text-text-secondary text-sm leading-relaxed max-w-sm"
             >
-              A small studio in Faisalabad, Punjab, working with teams abroad. No filler slides, just how we actually work.
+              A small studio in Faisalabad, Punjab, working with teams abroad. We ship a lot of AI alongside classic web and apps: no filler slides, just how we actually work.
             </motion.p>
 
             <motion.div
@@ -105,7 +105,7 @@ export const About = () => {
               <p className="first-letter:text-5xl first-letter:font-syne first-letter:font-bold first-letter:text-primary first-letter:mr-1 first-letter:float-left first-letter:leading-[0.85]">
                 We are Cyverix Solutions, a software and AI team in Faisalabad, Punjab, Pakistan, working with clients in other countries too. We
                 focus on the unglamorous parts that keep projects alive: clear requirements, steady releases, and code you can still change six
-                months from now.
+                months from now, including AI that behaves in production, not just in demos.
               </p>
               <p>
                 Whether you need something new, an update to older software, or AI inside real workflows, we try to act like partners. That means

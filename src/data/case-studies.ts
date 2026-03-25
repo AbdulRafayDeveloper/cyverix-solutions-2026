@@ -189,12 +189,12 @@ const caseStudiesData: CaseStudy[] = [
   },
   {
     id: "rewordify",
-    title: "Rewordify",
+    title: "Rewordify AI",
     category: "AI / Content",
     year: "2024",
     industry: "SaaS, AI writing and editorial tooling",
     summary:
-      "Rewordify is a SaaS workspace for teams and creators who need controlled rewriting, generation, and file-based editorial workflows. We shipped flows that respect tone, length, and format constraints while keeping exports compatible with downstream legal and marketing review.",
+      "Rewordify AI is a SaaS workspace for teams and creators who need controlled rewriting, generation, and file-based editorial workflows. We shipped flows that respect tone, length, and format constraints while keeping exports compatible with downstream legal and marketing review.",
     challenge:
       "Generic chat UIs frustrate professional writers: parameters drift, files leak context, and outputs are hard to version. The client needed deterministic-enough controls, ingest for office formats, and admin communication channels for policy updates.",
     solution:
@@ -206,6 +206,26 @@ const caseStudiesData: CaseStudy[] = [
     ],
     techStack: ["LLM content APIs", "PDF / DOC parsing", "Next.js or SPA client", "Job chunking for long docs", "Export pipelines", "Admin messaging"],
     role: "Product engineering for AI-assisted content SaaS",
+  },
+  {
+    id: "smart-transform",
+    title: "Smart Transform AI",
+    category: "AI / Creative suite",
+    year: "2024",
+    industry: "SaaS, Multimodal generative AI suite",
+    summary:
+      "Smart Transform AI is a unified creative suite spanning text-to-video, text-to-image, text-to-voice, voice-to-text, and image-to-text with admin analytics. We packaged multiple modality endpoints behind one product identity so teams stop juggling five single-purpose tabs.",
+    challenge:
+      "Multimodal UIs become confusing fast: users lose track of which model ran, which credits burned, and where outputs live. Operators need aggregate visibility to tune pricing and capacity.",
+    solution:
+      "We implemented a Next.js and Tailwind client with a centralized admin dashboard for activity logs, statistics, and behavioral insights. Tool routes share consistent progress, error, and history patterns so the suite feels intentional, not a bundle of iframes.",
+    highlights: [
+      "Five conversion tools with shared session, billing, and history semantics for lower support overhead.",
+      "Admin analytics on usage spikes that inform which modalities need rate limits or model upgrades.",
+      "Workflow defaults that guide non-technical creators through safe prompts and file prep steps.",
+    ],
+    techStack: ["Next.js", "Tailwind CSS", "Multimodal AI APIs", "Admin analytics DB", "Job tracking", "Auth and quotas"],
+    role: "Full-stack AI suite engineering and instrumentation",
   },
   {
     id: "pacedream",
@@ -579,26 +599,6 @@ const caseStudiesData: CaseStudy[] = [
     ],
     techStack: ["GPU / AI audio APIs", "Auth and gating", "Job queue for media", "Next.js or web client", "Admin analytics", "Storage for temp assets"],
     role: "AI media product engineering and admin tooling",
-  },
-  {
-    id: "smart-transform",
-    title: "Smart Transform",
-    category: "AI / Creative suite",
-    year: "2024",
-    industry: "SaaS, Multimodal generative AI suite",
-    summary:
-      "Smart Transform is a unified creative suite spanning text-to-video, text-to-image, text-to-voice, voice-to-text, and image-to-text with admin analytics. We packaged multiple modality endpoints behind one product identity so teams stop juggling five single-purpose tabs.",
-    challenge:
-      "Multimodal UIs become confusing fast: users lose track of which model ran, which credits burned, and where outputs live. Operators need aggregate visibility to tune pricing and capacity.",
-    solution:
-      "We implemented a Next.js and Tailwind client with a centralized admin dashboard for activity logs, statistics, and behavioral insights. Tool routes share consistent progress, error, and history patterns so the suite feels intentional, not a bundle of iframes.",
-    highlights: [
-      "Five conversion tools with shared session, billing, and history semantics for lower support overhead.",
-      "Admin analytics on usage spikes that inform which modalities need rate limits or model upgrades.",
-      "Workflow defaults that guide non-technical creators through safe prompts and file prep steps.",
-    ],
-    techStack: ["Next.js", "Tailwind CSS", "Multimodal AI APIs", "Admin analytics DB", "Job tracking", "Auth and quotas"],
-    role: "Full-stack AI suite engineering and instrumentation",
   },
   {
     id: "glowart",

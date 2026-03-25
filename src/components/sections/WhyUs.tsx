@@ -69,7 +69,7 @@ export const WhyUs = () => {
             Building <br /> <span className="text-gradient">Trust by Quality.</span>
           </motion.h2>
           <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-            We care about code you can live with after launch, not just a demo that looks good in week one. You get straight talk on tradeoffs and risk.
+            We care about code you can live with after launch, not just a demo that looks good in week one, including AI that does not fall apart under real traffic. You get straight talk on tradeoffs and risk.
           </p>
         </div>
 
