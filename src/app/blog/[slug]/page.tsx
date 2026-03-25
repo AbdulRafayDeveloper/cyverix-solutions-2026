@@ -49,7 +49,7 @@ export default async function BlogArticlePage({ params }: Props) {
       const pb = b.category === post.category ? 1 : 0;
       return pb - pa || new Date(b.date).getTime() - new Date(a.date).getTime();
     })
-    .slice(0, 2);
+    .slice(0, 4);
 
   return (
     <main className="min-h-screen bg-background text-text-primary">
@@ -125,7 +125,7 @@ export default async function BlogArticlePage({ params }: Props) {
         <section className="border-t border-white/[0.06] bg-alt-section/50 py-16 md:py-20 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="font-syne text-2xl font-bold text-white mb-8">Related articles</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
               {related.map((r) => (
                 <Link
                   key={r.slug}
