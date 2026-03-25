@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, Inter } from "next/font/google";
+import { CustomCursor } from "@/components/layout/CustomCursor";
+import { AppProviders } from "@/components/layout/AppProviders";
 import "./globals.css";
 
 const syne = Syne({
@@ -21,8 +23,12 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cyverix.com"),
-  title: "Cyverix Solutions | Advanced AI & Software Engineering House",
-  description: "Cyverix Solutions is a premier Faisalabad-based software house specializing in SaaS, AI automation, and high-scale digital products. Founded in 2023, we build the future of tech.",
+  title: {
+    default: "Cyverix Solutions | Software and AI development",
+    template: "%s | Cyverix Solutions",
+  },
+  description:
+    "Cyverix Solutions builds web apps, SaaS, and AI features for teams worldwide. Based in Faisalabad, Pakistan. Founded in 2023.",
   keywords: ["Cyverix Solutions", "Software House Faisalabad", "AI Solutions Pakistan", "SaaS Development", "Mobile App Development Faisalabad", "Software House in Faisalabad"],
   authors: [{ name: "Cyverix Solutions" }],
   robots: "index, follow",
@@ -30,8 +36,8 @@ export const metadata: Metadata = {
     canonical: "https://cyverix.com",
   },
   openGraph: {
-    title: "Cyverix Solutions | Advanced AI & Software Engineering",
-    description: "Building world-class digital products with AI and precision engineering. Based in Faisalabad, PK.",
+    title: "Cyverix Solutions | Software and AI development",
+    description: "Web apps, SaaS, and AI work from Faisalabad, Pakistan. Clear delivery for teams that need software they can run in production.",
     url: "https://cyverix.com",
     siteName: "Cyverix Solutions",
     images: [
@@ -47,8 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cyverix Solutions | Advanced AI & Software Engineering",
-    description: "Building world-class digital products with AI and precision engineering.",
+    title: "Cyverix Solutions | Software and AI development",
+    description: "Web apps, SaaS, and AI from Faisalabad. Practical builds for real products.",
     images: ["/logo.png"],
   },
   icons: {
@@ -69,9 +75,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${inter.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="antialiased bg-background text-text-primary selection:bg-primary selection:text-background font-inter" suppressHydrationWarning>
-        {children}
+    <html lang="en" className={`${syne.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body className="antialiased bg-background text-text-primary selection:bg-primary/35 selection:text-text-primary font-inter" suppressHydrationWarning>
+        <CustomCursor />
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

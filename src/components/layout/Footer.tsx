@@ -31,8 +31,7 @@ export const Footer = () => {
             </span>
           </Link>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Engineering the future of digital products since 2023.
-            Boutique software house building world-class SaaS, AI solutions, and apps.
+            Software and AI work from Faisalabad since 2023. We build SaaS, internal tools, and customer-facing apps for teams that want clear communication and steady delivery.
           </p>
           <div className="flex gap-4">
             <a
@@ -58,9 +57,22 @@ export const Footer = () => {
         <div>
           <h4 className="font-syne font-bold mb-6">Services</h4>
           <ul className="flex flex-col gap-4">
-            {["Web Development", "Web-Based Software", "AI Solutions", "Mobile App Development", "UI/UX Design"].map((link) => (
-              <li key={link}>
-                <Link href="/#services" className="text-sm text-text-secondary hover:text-primary transition-colors">{link}</Link>
+            <li>
+              <Link href="/services" className="link-animated text-sm text-text-secondary hover:text-primary transition-colors duration-200 delay-[40ms] font-semibold">
+                All services
+              </Link>
+            </li>
+            {[
+              { label: "Websites and web apps", hash: "website" },
+              { label: "Software / SaaS", hash: "software" },
+              { label: "AI Solutions", hash: "ai" },
+              { label: "Automation", hash: "automation" },
+              { label: "DevOps & Cloud", hash: "devops" },
+            ].map((item) => (
+              <li key={item.hash}>
+                <Link href={`/services#${item.hash}`} className="link-animated text-sm text-text-secondary hover:text-primary transition-colors duration-200 delay-[40ms]">
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -72,14 +84,13 @@ export const Footer = () => {
             {[
               { name: "Work", href: "/case-studies" },
               { name: "About Us", href: "/about" },
-              { name: "Careers", href: "/careers" },
               { name: "Contact", href: "/#contact" },
               { name: "Privacy Policy", href: "/privacy-policy" }
             ].map((link) => (
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className="text-sm text-text-secondary hover:text-primary transition-colors"
+                  className="link-animated text-sm text-text-secondary hover:text-primary transition-colors duration-200 delay-[40ms]"
                 >
                   {link.name}
                 </Link>

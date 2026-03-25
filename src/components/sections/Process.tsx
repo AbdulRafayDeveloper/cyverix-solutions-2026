@@ -2,38 +2,39 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { stagger, viewViewport } from "@/lib/motion";
 import { CheckCircle2, Circle, Search, FileText, Layers, Code2, Rocket } from "lucide-react";
 
 const steps = [
   {
     number: "01",
     icon: <Search size={24} />,
-    title: "Discovery & Analysis",
-    description: "Deep dive into your vision, target audience, and business goals. We analyze the market and technical constraints.",
+    title: "Discovery and analysis",
+    description: "We map what you want to ship, who it is for, and what constraints we have. That includes your market and the tech limits we need to respect.",
   },
   {
     number: "02",
     icon: <Layers size={24} />,
-    title: "Strategy & Architecture",
-    description: "Detailed architecture design and project roadmap. We define the tech stack and scalability requirements.",
+    title: "Strategy and architecture",
+    description: "We sketch the architecture and a rough roadmap. You see the stack choices and how we expect the system to grow.",
   },
   {
     number: "03",
     icon: <FileText size={24} />,
-    title: "Design & UX Mastery",
-    description: "High-fidelity UI/UX design and interactive user flows. We prioritize accessibility and premium aesthetics.",
+    title: "Design and UX",
+    description: "Wireframes through finished UI, with flows that work for real users. Accessibility stays on the list, not an afterthought.",
   },
   {
     number: "04",
     icon: <Code2 size={24} />,
-    title: "Precision Engineering",
-    description: "Agile sprints with continuous integration. Our code is peer-reviewed and tested for production-grade scale.",
+    title: "Build and test",
+    description: "We ship in short cycles with integration tests and code review. The goal is code you can run in production with confidence.",
   },
   {
     number: "05",
     icon: <Rocket size={24} />,
-    title: "Deployment & Growth",
-    description: "Seamless launch and post-deployment support. We monitor performance and iterate based on real feedback.",
+    title: "Launch and iterate",
+    description: "We help you go live, watch how the system behaves, and adjust based on what users actually do.",
   },
 ];
 
@@ -52,7 +53,7 @@ export const Process = () => {
             </h2>
           </div>
           <p className="text-text-secondary text-base md:text-lg max-w-sm leading-relaxed text-left md:text-right">
-            From deep discovery to final deployment, our process is optimized for speed, security, and scalability.
+            From first workshop to launch, we keep the loop tight: you always know what we are building next and why.
           </p>
         </div>
 
@@ -60,12 +61,13 @@ export const Process = () => {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="group relative flex flex-col p-8 glass rounded-[3rem] hover:border-primary/30 transition-all duration-700 hover:-translate-y-4"
+              viewport={viewViewport}
+              transition={stagger(index, 0.04)}
+              className="group relative flex flex-col p-8 glass rounded-[3rem] hover:border-primary/30 transition-colors duration-200 hover:-translate-y-2"
             >
-              <div className="absolute -top-4 -right-4 w-12 h-12 bg-surface border border-border rounded-2xl flex items-center justify-center font-syne font-black text-xs text-text-primary/40 group-hover:text-primary transition-all duration-500 group-hover:rotate-12">
+              <div className="absolute -top-4 -right-4 w-12 h-12 bg-surface border border-border rounded-2xl flex items-center justify-center font-syne font-black text-xs text-text-primary/40 group-hover:text-primary transition-all duration-200 group-hover:rotate-12">
                 {step.number}
               </div>
 

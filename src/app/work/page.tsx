@@ -4,64 +4,76 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, ArrowRight, X, Globe, Cpu, Bot, CheckCircle2 } from "lucide-react";
+import { ExternalLink, ArrowRight, X, CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 const allProjects = [
   {
     title: "EcoFlow Dashboard",
-    description: "An AI-powered renewable energy monitoring platform for smart cities. Real-time data visualization with predictive analytics.",
-    details: "EcoFlow is a comprehensive energy management system that leverages machine learning to predict energy consumption patterns. It provides city administrators with a real-time dashboard to monitor solar grid efficiency, battery storage levels, and distribution bottlenecks.",
-    features: ["Predictive Load Balancing", "Real-time IoT Integration", "Custom Webhooks", "Automated Reporting"],
+    description:
+      "Renewable energy monitoring for cities. Live charts and simple forecasts so you can see how the grid is doing.",
+    details:
+      "EcoFlow pulls together solar output, battery levels, and load data in one place. You get a clear view of what is happening now, plus light forecasting so teams can plan shifts before problems show up. Built for operators who need numbers they can trust, not another pretty chart with no context.",
+    features: ["Load planning helpers", "IoT-friendly feeds", "Webhooks for your tools", "Scheduled reports"],
     tags: ["Web App", "AI", "Cloud"],
     image: "/project1.png",
-    category: "AI & Data"
+    category: "AI and Data",
   },
   {
     title: "SwiftPay Fintech",
-    description: "Next-gen cross-border payments with blockchain settlement layer. High-security infrastructure for global finance.",
-    details: "SwiftPay revolutionizes international transfers by using a distributed ledger to settle transactions in seconds rather than days. It includes features for multi-currency wallets, automatic tax compliance, and fraud detection powered by behavioral AI.",
-    features: ["Blockchain Ledger", "Multi-currency Support", "AI Fraud Detection", "Biometric Security"],
+    description:
+      "Cross-border payments with faster settlement. Wallets, compliance hooks, and fraud signals in one stack.",
+    details:
+      "SwiftPay is built for teams that move money across borders and cannot wait days for clearance. You get multi-currency wallets, rules-friendly reporting, and alerts when activity looks off. Security is treated as part of the product, not a footnote.",
+    features: ["Shared ledger core", "Multi-currency wallets", "Risk and fraud signals", "Strong customer verification"],
     tags: ["Fintech", "Blockchain", "Next.js"],
     image: "/project2.png",
-    category: "Fintech"
+    category: "Fintech",
   },
   {
     title: "NeuroPath AI",
-    description: "Medical diagnostic assistant using deep learning for early detection of neurological disorders with 98% accuracy.",
-    details: "NeuroPath uses advanced computer vision to analyze MRI scans and identify subtle biomarkers of neurological decay. This tool assists radiographers in early screening, significantly improving patient outcomes through earlier intervention.",
-    features: ["Computer Vision", "HIPAA Compliant", "DICOM Support", "Cloud Diagnostics"],
+    description:
+      "Imaging support for neurology teams. Highlights patterns in scans so clinicians can review cases faster.",
+    details:
+      "NeuroPath helps radiology teams triage MRI work. It flags areas that deserve a closer look so specialists spend time where it matters. It is a decision support tool, not a replacement for clinical judgment, and it is set up with healthcare privacy in mind.",
+    features: ["Image analysis", "Built for HIPAA-style controls", "DICOM-friendly workflows", "Cloud-ready deployment"],
     tags: ["Healthcare", "AI", "Medical"],
     image: "/project3.png",
-    category: "HealthTech"
+    category: "HealthTech",
   },
   {
     title: "Nova Retail Engine",
-    description: "Omnichannel commerce platform for global retail brands with unified inventory and AI demand forecasting.",
-    details: "Nova provides a unified backbone for retail operations, syncing online storefronts with physical POS systems. It includes an AI engine that forecasts seasonal demand to optimize stock levels and reduce waste.",
-    features: ["Unified API", "Demand Forecasting", "POS Integration", "Customer Analytics"],
+    description:
+      "Retail ops in one system: web store, stores, and stock. Demand hints so you order closer to what you will sell.",
+    details:
+      "Nova ties your online and in-store sales to one inventory picture. You see what is selling, what is sitting, and where to move stock. Forecasting is there to cut waste and stockouts, not to promise perfect numbers every season.",
+    features: ["Single product API", "Demand hints", "POS links", "Customer and sales views"],
     tags: ["E-commerce", "SaaS", "Retail"],
     image: "/project1.png",
-    category: "RetailTech"
+    category: "RetailTech",
   },
   {
     title: "CyberShield Ops",
-    description: "Automated threat detection and response platform for enterprise-grade security monitoring.",
-    details: "CyberShield acts as a 24/7 security operations center, automatically flagging and mitigating suspicious network activity. It uses anomaly detection to stop zero-day attacks before they reach critical infrastructure.",
-    features: ["Network Analysis", "Incident Response", "Zero-trust Security", "Automated Patching"],
+    description:
+      "Security monitoring that surfaces odd traffic and helps your team respond without living inside ten different tools.",
+    details:
+      "CyberShield watches network and system signals and groups what looks suspicious. Your team gets enough context to investigate or contain issues quickly. The goal is fewer blind spots and calmer incident days, not buzzwords on a slide.",
+    features: ["Traffic and asset views", "Playbooks for incidents", "Tight access policies", "Patch tracking"],
     tags: ["Security", "Automation", "DevOps"],
     image: "/project2.png",
-    category: "CyberSecurity"
+    category: "CyberSecurity",
   },
   {
     title: "SkyLogistics AI",
-    description: "Intelligent route optimization for global shipping fleets reducing fuel consumption by 30%.",
-    details: "SkyLogistics calculates the most efficient paths for cargo ships and planes, accounting for weather patterns, fuel prices, and port congestion. It helps logistics companies significantly lower their carbon footprint and operational costs.",
-    features: ["Route Optimization", "Live Tracking", "Fuel Management", "Carbon Tracking"],
+    description:
+      "Route planning for ships and air cargo that weighs weather, fuel, and delays so you can cut waste where it hurts.",
+    details:
+      "SkyLogistics suggests routes and schedules based on live conditions and cost inputs. You see tradeoffs clearly instead of guessing. Many teams see lower fuel use and fewer idle hours, though your results depend on your fleet and lanes.",
+    features: ["Route suggestions", "Live shipment status", "Fuel and cost inputs", "Emissions reporting"],
     tags: ["Logistics", "AI", "SaaS"],
     image: "/project3.png",
-    category: "SupplyChain"
+    category: "SupplyChain",
   },
 ];
 
@@ -102,12 +114,12 @@ const ProjectModal = ({ project, onClose }: { project: any; onClose: () => void 
         <div className="p-6 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h3 className="text-lg font-bold text-text-primary mb-4">Project Overview</h3>
+              <h3 className="text-lg font-bold text-text-primary mb-4">Overview</h3>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-8">
                 {project.details}
               </p>
               
-              <h3 className="text-lg font-bold text-text-primary mb-4">Key Features</h3>
+              <h3 className="text-lg font-bold text-text-primary mb-4">What it includes</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                 {project.features.map((feature: string) => (
                   <div key={feature} className="flex items-center gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-background/50 border border-border">
@@ -157,8 +169,7 @@ export default function WorkPage() {
             Our Engineering <br /><span className="text-gradient">Impact</span>
           </motion.h1>
           <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">
-            A comprehensive look at the high-scale applications and intelligent systems 
-            we&apos;ve built for global partners.
+            Sample projects that show how we build web apps, data-heavy products, and integrations for teams like yours.
           </p>
         </div>
 

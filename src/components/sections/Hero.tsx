@@ -1,221 +1,183 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { MoveRight, Sparkles, Rocket } from "lucide-react";
+import { HeroTypewriter } from "@/components/sections/HeroTypewriter";
 
 export const Hero = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const reduceMotion = useReducedMotion();
+  const [headlineRest, setHeadlineRest] = useState(false);
+  const onTypeDone = useCallback(() => setHeadlineRest(true), []);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (reduceMotion) setHeadlineRest(true);
+  }, [reduceMotion]);
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const bgParallaxRef = useRef<HTMLDivElement>(null);
 
-    let animationFrameId: number;
-    let particles: any[] = [];
-
-    const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      ctx.scale(dpr, dpr);
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      init();
+  /* Barely noticeable parallax on home (`#main-scroll`); no-op on other routes. */
+  useEffect(() => {
+    if (reduceMotion) return;
+    const main = document.getElementById("main-scroll");
+    const layer = bgParallaxRef.current;
+    if (!main || !layer) return;
+    const onScroll = () => {
+      const t = Math.min(1, main.scrollTop / 480);
+      layer.style.transform = `translate3d(0, ${t * 10}px, 0)`;
     };
-
-    class Particle {
-      x: number;
-      y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      color: string;
-
-      constructor() {
-        this.x = Math.random() * window.innerWidth;
-        this.y = Math.random() * window.innerHeight;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        this.color = Math.random() > 0.5 ? "rgba(0, 255, 178, 0.4)" : "rgba(123, 94, 167, 0.4)";
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x > window.innerWidth) this.x = 0;
-        if (this.x < 0) this.x = window.innerWidth;
-        if (this.y > window.innerHeight) this.y = 0;
-        if (this.y < 0) this.y = window.innerHeight;
-      }
-
-      draw() {
-        ctx!.fillStyle = this.color;
-        ctx!.beginPath();
-        ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx!.fill();
-      }
-    }
-
-    const init = () => {
-      particles = [];
-      const particleCount = window.innerWidth < 768 ? 60 : 150;
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-    };
-
-    const animate = () => {
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-      ctx.lineWidth = 1;
-      const connectionDistance = 150;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < connectionDistance) {
-            ctx.strokeStyle = `rgba(0, 255, 178, ${0.2 * (1 - distance / connectionDistance)})`;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-        particles[i].update();
-        particles[i].draw();
-      }
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    window.addEventListener("resize", resize);
-    resize();
-    animate();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
+    main.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => main.removeEventListener("scroll", onScroll);
+  }, [reduceMotion]);
 
   return (
-    <section className="relative min-h-screen w-full snap-start snap-always flex flex-col justify-center items-center px-6 overflow-hidden bg-[#0A0A0F] py-20">
-      {/* Background Media */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full -z-10 opacity-70"
-      />
+    <section
+      className="relative min-h-screen min-h-[100dvh] w-full snap-start snap-always overflow-hidden flex flex-col justify-center"
+      aria-label="Hero"
+    >
+      {/* Full-bleed background, light parallax */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div ref={bgParallaxRef} className="absolute inset-0 will-change-transform">
+          <Image
+            src="/hero-software-house-bg.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            onLoadingComplete={() => setImgLoaded(true)}
+            className={`object-cover object-center transition-opacity duration-500 ease-out motion-reduce:transition-none ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+            quality={90}
+          />
+        </div>
+        {/* Readability overlays */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[#050508] via-[#0A0A0F]/88 to-[#0A0A0F]/35 sm:from-[#050508] sm:via-[#0A0A0F]/82 sm:to-transparent"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-[#0A0A0F]/25 to-[#050508]/50"
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-primary/[0.03] mix-blend-overlay pointer-events-none" aria-hidden />
+      </div>
 
-      {/* Background Blobs (Adaptive Size) */}
-      <motion.div
-        animate={{ scale: [1, 1.15, 1], x: [0, 20, 0], y: [0, -20, 0] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/4 -left-1/4 w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] bg-primary/10 blur-[100px] rounded-full -z-10"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.25, 1], x: [0, -20, 0], y: [0, 40, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-1/4 -right-1/4 w-[45vw] h-[45vw] max-w-[500px] max-h-[500px] bg-secondary/10 blur-[100px] rounded-full -z-10"
-      />
-
-      {/* Content Container (Main Focus) */}
-      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center relative z-10 flex-1">
-
-        {/* Hero Headline (Responsive Clamped Size) */}
-        <div className="text-center w-full max-w-6xl py-8 md:py-12">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center py-24 sm:py-28 md:py-32 lg:min-h-[100dvh]">
+        <div className="w-full max-w-3xl lg:max-w-4xl text-left">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[clamp(2.2rem,8vw,7.5rem)] font-syne font-extrabold mb-6 md:mb-8 leading-[1.1] md:leading-[1.0] tracking-tight md:tracking-tighter"
+            transition={{ duration: 0.32, delay: 0.02, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-primary/90 font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] mb-5 sm:mb-6"
           >
-            Engineering <br className="hidden sm:block" />
-            <span className="text-gradient">Human</span> <br className="hidden sm:block" />
-            Advantage.
+            Cyverix Solutions, software and AI engineering
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.38, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-white font-syne font-extrabold text-[clamp(2.25rem,6.5vw,4.75rem)] leading-[1.05] tracking-tight mb-5 sm:mb-6 md:mb-8"
+          >
+            <span className="text-white">
+              <HeroTypewriter onComplete={onTypeDone} />
+            </span>
+            <br className="hidden sm:block" />
+            <motion.span
+              initial={false}
+              animate={{ opacity: headlineRest ? 1 : 0, y: headlineRest ? 0 : 8 }}
+              transition={{ duration: 0.35, delay: 0.06, ease: [0.25, 0.1, 0.25, 1] }}
+              className="inline-block"
+            >
+              <span className="text-gradient">Human</span> Advantage.
+            </motion.span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl text-text-secondary/90 max-w-2xl mx-auto mb-6 md:mb-10 font-medium leading-relaxed"
+            transition={{ duration: 0.32, delay: 0.14, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-white/75 text-base sm:text-lg md:text-xl max-w-xl leading-relaxed font-medium mb-8 sm:mb-10 md:mb-12"
           >
-            Building ultra-scalable AI architectures and complex software ecosystems designed
-            to redefine world-class enterprises.
+            We help you ship{" "}
+            <span className="text-highlight-keyword">AI systems and software</span> that stay reliable as you grow. Clear builds,
+            honest timelines, and code your own team can work with later.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6"
+            transition={{ duration: 0.32, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4"
           >
             <Link
-              href="#portfolio"
-              className="group relative w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 bg-cta rounded-2xl font-bold text-background glow-on-hover flex items-center justify-center gap-3 transition-transform hover:scale-[1.05]"
+              href="#contact"
+              className="btn-polish btn-ripple inline-flex items-center justify-center min-h-[48px] px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-[#0A0A0F] font-bold text-xs sm:text-sm uppercase tracking-[0.12em] rounded-none sm:rounded-sm transition-colors duration-200 delay-[40ms] shadow-lg shadow-black/25"
             >
-              Explore Our Work
-              <MoveRight className="transition-transform group-hover:translate-x-1.5" size={20} />
+              Get in touch
             </Link>
             <Link
-              href="#contact"
-              className="w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 rounded-2xl border border-white/10 hover:border-primary/50 text-text-primary font-bold transition-all bg-white/5 backdrop-blur-sm hover:bg-white/10 flex items-center justify-center"
+              href="/case-studies"
+              className="btn-polish link-animated inline-flex items-center justify-center gap-2 min-h-[48px] px-8 sm:px-10 py-3.5 sm:py-4 border border-white/25 text-white font-bold text-sm rounded-none sm:rounded-sm transition-colors duration-200 delay-[40ms] hover:border-primary/50 hover:bg-white/5"
             >
-              Consult an Engineer
+              Explore our work
+              <MoveRight className="shrink-0 icon-hover-nudge" size={18} strokeWidth={2.5} aria-hidden />
             </Link>
+          </motion.div>
+        </div>
+
+        {/* Trust strip, desktop */}
+        <div className="hidden xl:flex mt-auto pt-20 w-full justify-between items-end gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 0.92, x: 0 }}
+            transition={{ delay: 0.35, duration: 0.32, ease: [0.25, 0.1, 0.25, 1] }}
+            className="card-polish p-5 glass rounded-xl border-white/10 flex items-center gap-4 max-w-sm"
+          >
+            <div
+              className="w-10 h-10 bg-secondary/25 rounded-lg flex items-center justify-center text-secondary shrink-0 icon-hover-nudge"
+              title="Delivery track record"
+            >
+              <Rocket size={20} />
+            </div>
+            <div>
+              <p className="text-[9px] font-mono text-secondary/90 uppercase tracking-widest">Delivery</p>
+              <p className="text-lg font-bold font-syne text-white">100+ Projects</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 12 }}
+            animate={{ opacity: 0.92, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.32, ease: [0.25, 0.1, 0.25, 1] }}
+            className="card-polish p-5 glass rounded-xl border-white/10 flex items-center gap-4 max-w-sm"
+          >
+            <div
+              className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary shrink-0 icon-hover-nudge"
+              title="Active AI models in production"
+            >
+              <Sparkles size={20} />
+            </div>
+            <div>
+              <p className="text-[9px] font-mono text-primary/90 uppercase tracking-widest">AI Lab</p>
+              <p className="text-lg font-bold font-syne text-white">10+ Active Models</p>
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Global Status Indicators (Floating Sidebar-style) */}
-      <div className="absolute inset-x-0 bottom-24 max-w-7xl mx-auto px-8 pointer-events-none hidden xl:flex justify-between items-end">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 0.8, x: 0 }}
-          transition={{ delay: 1.2 }}
-          className="p-5 glass rounded-2xl border-white/5 flex items-center gap-4"
-        >
-          <div className="w-10 h-10 bg-secondary/20 rounded-xl flex items-center justify-center text-secondary">
-            <Rocket size={20} />
-          </div>
-          <div>
-            <p className="text-[9px] font-mono text-secondary uppercase tracking-widest">Global Status</p>
-            <p className="text-lg font-bold font-syne">100+ Projects</p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 0.8, x: 0 }}
-          transition={{ delay: 1 }}
-          className="p-5 glass rounded-2xl border-white/5 flex items-center gap-4"
-        >
-          <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
-            <Sparkles size={20} />
-          </div>
-          <div>
-            <p className="text-[9px] font-mono text-primary uppercase tracking-widest">AI Readiness</p>
-            <p className="text-lg font-bold font-syne">10+ Active Models</p>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Scroll Down Hint */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.2 }}
-        className="absolute bottom-10 flex flex-col items-center gap-4"
+        transition={{ delay: 0.48, duration: 0.32 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 md:left-[max(1.25rem,calc((100vw-80rem)/2+1.25rem))] md:translate-x-0 md:bottom-10"
+        aria-hidden
       >
-        <div className="w-[1px] h-12 md:h-16 bg-gradient-to-b from-primary/50 to-transparent" />
+        <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/35 hidden md:block">Scroll</span>
+        <div className="w-px h-10 md:h-14 bg-gradient-to-b from-primary/60 to-transparent" />
       </motion.div>
     </section>
   );
