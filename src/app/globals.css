@@ -646,6 +646,14 @@ code,
   border-radius: 0 0 2px 0;
 }
 
+/* Services page — hero atmosphere */
+.services-hero-mesh {
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -25%, rgba(0, 255, 178, 0.14), transparent 52%),
+    radial-gradient(ellipse 55% 45% at 100% 15%, rgba(123, 94, 167, 0.12), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 0% 80%, rgba(0, 255, 178, 0.06), transparent 45%);
+}
+
 /* About page — engineering bento mesh */
 .about-spec-mesh {
   background-image:
