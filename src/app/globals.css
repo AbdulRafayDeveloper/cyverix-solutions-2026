@@ -582,6 +582,70 @@ code,
   }
 }
 
+/* Contact section: transmission panel + scan aesthetic */
+.contact-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 255, 178, 0.02) 3px,
+    rgba(0, 255, 178, 0.02) 4px
+  );
+  pointer-events: none;
+}
+
+.contact-transmission-frame {
+  position: relative;
+  background: linear-gradient(165deg, rgba(18, 18, 26, 0.92) 0%, rgba(10, 10, 15, 0.98) 100%);
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 178, 0.12),
+    0 24px 80px -32px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.contact-corner-tl,
+.contact-corner-tr,
+.contact-corner-bl,
+.contact-corner-br {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.contact-corner-tl {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid rgba(0, 255, 178, 0.55);
+  border-left: 2px solid rgba(0, 255, 178, 0.55);
+  border-radius: 2px 0 0 0;
+}
+
+.contact-corner-tr {
+  top: 10px;
+  right: 10px;
+  border-top: 2px solid rgba(0, 255, 178, 0.35);
+  border-right: 2px solid rgba(123, 94, 167, 0.45);
+  border-radius: 0 2px 0 0;
+}
+
+.contact-corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 2px solid rgba(123, 94, 167, 0.35);
+  border-left: 2px solid rgba(123, 94, 167, 0.45);
+  border-radius: 0 0 0 2px;
+}
+
+.contact-corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 2px solid rgba(0, 255, 178, 0.25);
+  border-right: 2px solid rgba(0, 255, 178, 0.25);
+  border-radius: 0 0 2px 0;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
