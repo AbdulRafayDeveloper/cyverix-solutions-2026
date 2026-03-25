@@ -105,8 +105,7 @@ export default function CaseStudiesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-text-secondary text-base md:text-lg max-w-2xl leading-relaxed mb-8"
               >
-                Real products we shipped: SaaS, AI, marketplaces, education tools, and more. Each story is problem, approach, and what shipped — in
-                plain language you can scan in minutes.
+                These are real products we’ve built and launched ranging from SaaS and AI to marketplaces and education tools. Each one breaks down the problem, our approach, and what actually went live in simple, easy-to-scan language.
               </motion.p>
 
               <motion.div
@@ -145,7 +144,7 @@ export default function CaseStudiesPage() {
                 />
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary mb-2">At a glance</p>
                 <p className="font-syne text-xl md:text-2xl font-bold text-white leading-snug mb-6">
-                  Every preview matches the product&apos;s industry — details and stack live beside the art.
+                  Every preview matches the product&apos;s industry: details and stack live beside the art.
                 </p>
                 <ul className="space-y-4 text-sm text-text-secondary/95">
                   <li className="flex gap-3">
@@ -154,7 +153,7 @@ export default function CaseStudiesPage() {
                   </li>
                   <li className="flex gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary/90" />
-                    Scroll the list — load more when you want more depth.
+                    Scroll through the stories below, and use Load more when you want to go deeper.
                   </li>
                 </ul>
               </div>
@@ -189,9 +188,8 @@ export default function CaseStudiesPage() {
                   className="group scroll-mt-28"
                 >
                   <div
-                    className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start ${
-                      imageRight ? "" : "lg:flex-row-reverse"
-                    }`}
+                    className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start ${imageRight ? "" : "lg:flex-row-reverse"
+                      }`}
                   >
                     <div className={`lg:col-span-5 ${imageRight ? "lg:order-1" : "lg:order-2"} shrink-0`}>
                       <div className="relative p-[1px] rounded-[1.85rem] md:rounded-[2.15rem] bg-gradient-to-br from-primary/35 via-white/10 to-secondary/30 shadow-[0_28px_100px_-40px_rgba(0,0,0,0.9)]">

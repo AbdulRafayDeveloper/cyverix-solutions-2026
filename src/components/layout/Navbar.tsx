@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -17,14 +17,7 @@ const navLinks = [
 export const Navbar = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [navHidden, setNavHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const lastY = useRef(0);
-
-  useEffect(() => {
-    lastY.current = 0;
-    setNavHidden(false);
-  }, [pathname]);
 
   useEffect(() => {
     let detach: (() => void) | undefined;
@@ -43,19 +36,6 @@ export const Navbar = () => {
       const onScroll = () => {
         const y = readY();
         setIsScrolled(y > 24);
-
-        if (mobileMenuOpen) {
-          lastY.current = y;
-          return;
-        }
-
-        const delta = y - lastY.current;
-        if (y > 100 && delta > 6) {
-          setNavHidden(true);
-        } else if (delta < -6) {
-          setNavHidden(false);
-        }
-        lastY.current = y;
       };
 
       scrollEl.addEventListener("scroll", onScroll, { passive: true });
@@ -68,13 +48,12 @@ export const Navbar = () => {
       cancelAnimationFrame(raf);
       detach?.();
     };
-  }, [pathname, mobileMenuOpen]);
+  }, [pathname]);
 
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] will-change-transform",
-        navHidden && !mobileMenuOpen ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100",
+        "fixed top-0 left-0 right-0 z-50 transition-[padding] duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]",
         isScrolled ? "pt-3 md:pt-4 px-4 md:px-6" : "px-4 md:px-6 py-3 md:py-4"
       )}
     >

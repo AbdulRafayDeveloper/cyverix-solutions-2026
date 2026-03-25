@@ -52,8 +52,7 @@ export default function ServicesPage() {
                 <span className="text-gradient">products that ship</span>
               </h1>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-                From first sketch to production traffic — websites, SaaS, mobile and desktop, automation, cloud, and product design. Jump to a lane or
-                read end to end.
+                From the first sketch to real-world production traffic, we build websites, SaaS platforms, mobile and desktop apps, automation systems, cloud solutions, and product designs. You can explore a specific area or read through everything from start to finish.
               </p>
               <ul className="flex flex-wrap justify-center lg:justify-start gap-2.5 md:gap-3" aria-label="Highlights">
                 {heroChips.map(({ label, icon: ChipIcon }) => (
@@ -108,7 +107,7 @@ export default function ServicesPage() {
 
                   <div className="absolute top-4 left-4 z-[3] max-w-[min(100%,220px)] rounded-xl border border-white/10 bg-background/55 px-3 py-2.5 backdrop-blur-md shadow-lg">
                     <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-primary mb-1">Studio note</p>
-                    <p className="text-[11px] leading-snug text-text-secondary/95">Same team as the homepage — no anonymous handoffs.</p>
+                    <p className="text-[11px] leading-snug text-text-secondary/95">Same team as the homepage: no anonymous handoffs.</p>
                   </div>
 
                   <div className="absolute bottom-4 left-4 right-4 z-[3] flex flex-wrap gap-2 justify-between items-end">
@@ -156,16 +155,14 @@ export default function ServicesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewViewport}
               transition={{ ...viewTransition, delay: index * 0.04 }}
-              className={`group scroll-mt-28 relative rounded-2xl md:rounded-[1.75rem] border overflow-hidden shadow-[0_28px_90px_-40px_rgba(0,0,0,0.88)] backdrop-blur-[2px] transition-shadow duration-500 hover:shadow-[0_36px_100px_-36px_rgba(0,0,0,0.92)] ${
-                isPrimary
+              className={`group scroll-mt-28 relative rounded-2xl md:rounded-[1.75rem] border overflow-hidden shadow-[0_28px_90px_-40px_rgba(0,0,0,0.88)] backdrop-blur-[2px] transition-shadow duration-500 hover:shadow-[0_36px_100px_-36px_rgba(0,0,0,0.92)] ${isPrimary
                   ? "border-primary/25 bg-gradient-to-br from-primary/[0.09] via-surface/[0.55] to-background/60"
                   : "border-secondary/20 bg-gradient-to-br from-secondary/[0.1] via-surface/[0.55] to-background/60"
-              }`}
+                }`}
             >
               <div
-                className={`pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-80 ${
-                  isPrimary ? "via-primary/30" : "via-secondary/25"
-                }`}
+                className={`pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-80 ${isPrimary ? "via-primary/30" : "via-secondary/25"
+                  }`}
                 aria-hidden
               />
               <div
@@ -183,11 +180,10 @@ export default function ServicesPage() {
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <div
-                      className={`relative w-16 h-16 md:w-[4.75rem] md:h-[4.75rem] rounded-2xl flex items-center justify-center border shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] ${
-                        isPrimary
+                      className={`relative w-16 h-16 md:w-[4.75rem] md:h-[4.75rem] rounded-2xl flex items-center justify-center border shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] ${isPrimary
                           ? "bg-gradient-to-br from-primary/20 to-primary/5 border-primary/35 text-primary ring-1 ring-primary/15"
                           : "bg-gradient-to-br from-secondary/20 to-secondary/5 border-secondary/35 text-secondary ring-1 ring-secondary/15"
-                      }`}
+                        }`}
                     >
                       <Icon
                         size={34}
@@ -203,11 +199,10 @@ export default function ServicesPage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-3 mb-3">
                       <span
-                        className={`inline-flex items-center rounded-lg border px-2.5 py-1 text-[11px] font-semibold tracking-wide ${
-                          isPrimary
+                        className={`inline-flex items-center rounded-lg border px-2.5 py-1 text-[11px] font-semibold tracking-wide ${isPrimary
                             ? "border-primary/35 bg-primary/[0.08] text-primary"
                             : "border-secondary/35 bg-secondary/[0.08] text-secondary"
-                        }`}
+                          }`}
                       >
                         {service.jumpLabel}
                       </span>
@@ -223,11 +218,10 @@ export default function ServicesPage() {
                       {service.features.map((f) => (
                         <div
                           key={f}
-                          className={`group/feat relative flex items-start gap-3 rounded-xl border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-transparent p-3.5 pl-4 backdrop-blur-[2px] transition-all duration-300 hover:border-white/12 ${
-                            isPrimary
+                          className={`group/feat relative flex items-start gap-3 rounded-xl border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-transparent p-3.5 pl-4 backdrop-blur-[2px] transition-all duration-300 hover:border-white/12 ${isPrimary
                               ? "hover:shadow-[inset_0_0_0_1px_rgba(0,255,178,0.12)] border-l-2 border-l-primary/30"
                               : "hover:shadow-[inset_0_0_0_1px_rgba(123,94,167,0.15)] border-l-2 border-l-secondary/35"
-                          }`}
+                            }`}
                         >
                           <CheckCircle2
                             className={`shrink-0 mt-0.5 ${isPrimary ? "text-primary" : "text-secondary"}`}

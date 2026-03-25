@@ -25,7 +25,7 @@ const engineeringSignals = [
   {
     icon: Rocket,
     label: "Ship in slices",
-    text: "Testable drops beat one big reveal — you always know what shipped and what is next.",
+    text: "Testable drops beat one big reveal: you always know what shipped and what is next.",
   },
   {
     icon: Eye,
@@ -103,7 +103,7 @@ export default function AboutPage() {
               >
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary/90">North star</p>
                 <p className="font-syne text-2xl md:text-3xl xl:text-[2rem] font-bold text-white leading-snug">
-                  No black box at the end of the quarter — only work you have seen in motion.
+                  No black box at the end of the quarter: only work you have seen in motion.
                 </p>
                 <div className="h-px w-full bg-gradient-to-r from-primary/40 via-white/10 to-transparent mt-auto" aria-hidden />
               </motion.div>
