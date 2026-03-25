@@ -92,7 +92,7 @@ export const Navbar = () => {
       >
         <Link href="/" className="flex items-center gap-3 group shrink-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
           <div className="relative w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-lg img-hover-zoom">
-            <Image src="/logo.png" alt="Cyverix Solutions Logo" width={40} height={40} priority className="object-contain" />
+            <Image src="/cyverix-logo.svg" alt="Cyverix Solutions" width={40} height={40} priority className="object-contain" />
           </div>
           <span className="text-lg md:text-2xl font-bold font-syne tracking-tight group-hover:text-primary transition-colors duration-200 delay-[40ms] hidden sm:block">
             Cyverix Solutions

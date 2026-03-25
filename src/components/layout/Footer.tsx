@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Linkedin, Facebook, Github, Instagram, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from "lucide-react";
+import { SITE_LOCATION_DISPLAY, SITE_PHONE_DISPLAY } from "@/lib/site";
 
 export const Footer = () => {
   const [mounted, setMounted] = useState(false);
@@ -20,8 +21,8 @@ export const Footer = () => {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-8 h-8 overflow-hidden rounded-md">
               <Image
-                src="/logo.png"
-                alt="Cyverix Solutions Logo"
+                src="/cyverix-logo.svg"
+                alt="Cyverix Solutions"
                 fill
                 className="object-contain"
               />
@@ -31,7 +32,7 @@ export const Footer = () => {
             </span>
           </Link>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Software and AI work from Faisalabad since 2023. We build SaaS, internal tools, and customer-facing apps for teams that want clear communication and steady delivery.
+            Software and AI work from Faisalabad, Punjab since 2023. We build SaaS, internal tools, and customer-facing apps for teams that want clear communication and steady delivery.
           </p>
           <div className="flex gap-4">
             <a
@@ -50,6 +51,14 @@ export const Footer = () => {
             >
               <Facebook size={18} />
             </a>
+            <a
+              href="https://www.instagram.com/cyverix_solutions/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 border border-border rounded-lg flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-all"
+            >
+              <Instagram size={18} />
+            </a>
           </div>
         </div>
 
@@ -67,7 +76,8 @@ export const Footer = () => {
               { label: "Software / SaaS", hash: "software" },
               { label: "AI Solutions", hash: "ai" },
               { label: "Automation", hash: "automation" },
-              { label: "DevOps & Cloud", hash: "devops" },
+              { label: "DevOps and Cloud", hash: "devops" },
+              { label: "Desktop applications", hash: "desktop" },
             ].map((item) => (
               <li key={item.hash}>
                 <Link href={`/services#${item.hash}`} className="link-animated text-sm text-text-secondary hover:text-primary transition-colors duration-200 delay-[40ms]">
@@ -113,14 +123,14 @@ export const Footer = () => {
               <Phone size={18} className="text-secondary mt-1" />
               <div>
                 <p className="text-xs text-text-secondary uppercase tracking-widest font-mono">Call us</p>
-                <p className="text-sm font-bold">+92 300 1234567</p>
+                <p className="text-sm font-bold">{SITE_PHONE_DISPLAY}</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
               <MapPin size={18} className="text-primary mt-1" />
               <div>
                 <p className="text-xs text-text-secondary uppercase tracking-widest font-mono">Visit us</p>
-                <p className="text-sm font-bold">Faisalabad, PK</p>
+                <p className="text-sm font-bold">{SITE_LOCATION_DISPLAY}</p>
               </div>
             </li>
           </ul>

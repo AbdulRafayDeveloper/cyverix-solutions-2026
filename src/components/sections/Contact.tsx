@@ -4,7 +4,8 @@ import React, { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { stagger, viewTransition, viewViewport } from "@/lib/motion";
 import { DEFAULT_SERVICE, SERVICE_OPTIONS, type ServiceOption } from "@/lib/service-options";
-import { Mail, Phone, MapPin, Send, CheckCircle2, Loader2, Linkedin, Facebook, Instagram, AlertCircle, Sparkles } from "lucide-react";
+import { Mail, Phone, Send, CheckCircle2, Loader2, AlertCircle, Sparkles } from "lucide-react";
+import { SITE_PHONE_DISPLAY } from "@/lib/site";
 
 const Toast = ({
   message,
@@ -154,7 +155,7 @@ export const Contact = () => {
 
       <div className="max-w-7xl mx-auto w-full">
         <hr className="section-flow-divider mb-16 md:mb-20 opacity-80" aria-hidden />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14 xl:gap-16 items-start">
           <div>
             <motion.span
               initial={{ opacity: 0, x: -12 }}
@@ -179,16 +180,15 @@ export const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewViewport}
               transition={{ ...viewTransition, delay: 0.08 }}
-              className="text-base md:text-lg max-w-md mb-12 leading-relaxed text-text-secondary/95"
+              className="text-base md:text-lg max-w-md mb-8 md:mb-10 leading-relaxed text-text-secondary/95"
             >
               Whether you have a full brief or a rough idea, we can help you turn it into working software.
             </motion.p>
 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4 md:gap-5">
               {[
                 { icon: <Mail size={24} />, label: "Email", value: "hello@cyverix.com", color: "text-primary" },
-                { icon: <Phone size={24} />, label: "WhatsApp", value: "+92 300 1234567", color: "text-secondary" },
-                { icon: <MapPin size={24} />, label: "Location", value: "Faisalabad, Pakistan", color: "text-primary" },
+                { icon: <Phone size={24} />, label: "WhatsApp", value: SITE_PHONE_DISPLAY, color: "text-secondary" },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -196,7 +196,7 @@ export const Contact = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={viewViewport}
                   transition={stagger(i, 0.04)}
-                  className="card-polish flex items-center gap-6 p-6 glass rounded-3xl hover:bg-white/5 transition-colors duration-200 group"
+                  className="card-polish flex items-center gap-5 p-5 md:p-6 glass rounded-3xl hover:bg-white/5 transition-colors duration-200 group"
                 >
                   <div
                     className={`w-14 h-14 rounded-2xl bg-surface border border-border flex items-center justify-center ${item.color} icon-hover-nudge`}
@@ -211,30 +211,6 @@ export const Contact = () => {
                 </motion.div>
               ))}
             </div>
-
-            <div className="flex gap-3 mt-12">
-              <a
-                href="https://linkedin.com"
-                className="w-12 h-12 rounded-full glass flex items-center justify-center text-text-secondary hover:text-primary transition-colors duration-200 border border-transparent hover:border-primary/30 icon-hover-nudge"
-                title="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://facebook.com"
-                className="w-12 h-12 rounded-full glass flex items-center justify-center text-text-secondary hover:text-primary transition-colors duration-200 border border-transparent hover:border-primary/30 icon-hover-nudge"
-                title="Facebook"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="https://instagram.com"
-                className="w-12 h-12 rounded-full glass flex items-center justify-center text-text-secondary hover:text-primary transition-colors duration-200 border border-transparent hover:border-primary/30 icon-hover-nudge"
-                title="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-            </div>
           </div>
 
           <motion.div
@@ -242,16 +218,16 @@ export const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewViewport}
             transition={viewTransition}
-            className="card-polish p-6 md:p-14 glass rounded-3xl md:rounded-[3rem] shadow-2xl relative border border-border/80"
+            className="card-polish w-full max-w-xl lg:max-w-none px-5 py-5 md:px-6 md:pt-6 md:pb-5 lg:px-7 lg:pt-7 lg:pb-6 glass rounded-2xl md:rounded-3xl shadow-2xl relative border border-border/80 self-start"
           >
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 blur-[80px] rounded-full pointer-events-none" />
 
             <form
               onSubmit={handleSubmit}
               noValidate
-              className={`flex flex-col gap-7 md:gap-8 ${formShake ? "animate-shake-subtle" : ""}`}
+              className={`flex flex-col gap-4 md:gap-5 ${formShake ? "animate-shake-subtle" : ""}`}
             >
-              <div className="flex flex-col md:grid md:grid-cols-2 gap-7 md:gap-8">
+              <div className="flex flex-col md:grid md:grid-cols-2 gap-5 md:gap-6">
                 <div className={errors.fullName && touched.fullName ? "float-field float-field--error" : "float-field"}>
                   <input
                     id="contact-fullname"
@@ -284,12 +260,12 @@ export const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2">
                 <label htmlFor="contact-service" className="text-[10px] font-mono uppercase tracking-widest text-text-secondary">
                   Service
                 </label>
-                <p className="text-[11px] text-text-secondary/70 -mt-1">
-                  Pick what fits. Same list as on Services: Web, SaaS, AI, Automation, DevOps, UI and UX, Mobile.
+                <p className="text-[10px] sm:text-[11px] text-text-secondary/70 leading-snug">
+                  Same options as on the Services page. Use the dropdown or a quick tag.
                 </p>
                 <select
                   id="contact-service"
@@ -297,7 +273,7 @@ export const Contact = () => {
                   required
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value as ServiceOption })}
-                  className="w-full rounded-xl border border-border bg-background/80 px-4 py-3.5 text-sm font-medium text-text-primary transition-[border-color,box-shadow] duration-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/35 cursor-pointer"
+                  className="w-full rounded-xl border border-border bg-background/80 px-3 py-2.5 text-sm font-medium text-text-primary transition-[border-color,box-shadow] duration-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/35 cursor-pointer"
                 >
                   {SERVICE_OPTIONS.map((s) => (
                     <option key={s} value={s}>
@@ -305,15 +281,19 @@ export const Contact = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex flex-wrap gap-2" role="group" aria-label="Quick select service">
+                <div
+                  className="grid grid-cols-2 sm:grid-cols-4 gap-1.5"
+                  role="group"
+                  aria-label="Quick select service"
+                >
                   {SERVICE_OPTIONS.map((s) => (
                     <button
                       key={s}
                       type="button"
                       onClick={() => setFormData({ ...formData, service: s })}
-                      className={`px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold border transition-all duration-200 delay-[40ms] ${
+                      className={`px-2 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold border leading-tight transition-all duration-200 delay-[40ms] ${
                         formData.service === s
-                          ? "bg-primary text-background border-primary shadow-[0_0_16px_rgba(0,255,178,0.25)]"
+                          ? "bg-primary text-background border-primary shadow-[0_0_12px_rgba(0,255,178,0.25)]"
                           : "border-border text-text-secondary hover:border-primary/40 hover:text-text-primary"
                       }`}
                     >
@@ -328,11 +308,12 @@ export const Contact = () => {
                   id="contact-message"
                   name="message"
                   required
-                  rows={4}
+                  rows={5}
                   placeholder=" "
                   value={formData.message}
                   onChange={(e) => handleChange("message", e.target.value)}
                   onBlur={() => handleBlur("message")}
+                  className="min-h-[7.5rem] md:min-h-[8rem]"
                 />
                 <label htmlFor="contact-message">Tell us about your project</label>
                 {errors.message && touched.message ? <p className="field-hint">{errors.message}</p> : null}
@@ -343,7 +324,7 @@ export const Contact = () => {
                 type="submit"
                 whileTap={{ scale: 0.985 }}
                 transition={{ duration: 0.15 }}
-                className="btn-polish btn-ripple group relative w-full py-5 bg-cta rounded-2xl font-bold text-background flex items-center justify-center gap-3 overflow-hidden shadow-2xl transition-shadow duration-200"
+                className="btn-polish btn-ripple group relative w-full py-3.5 md:py-4 bg-cta rounded-xl md:rounded-2xl font-bold text-background flex items-center justify-center gap-3 overflow-hidden shadow-xl transition-shadow duration-200"
               >
                 <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                 {status === "loading" ? (

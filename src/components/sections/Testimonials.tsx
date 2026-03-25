@@ -3,65 +3,48 @@
 import React from "react";
 import { Star, MessageSquareQuote } from "lucide-react";
 
+/** Order: 2 Australia, 1 Taiwan, then 3 Pakistan (center block), 1 Saudi Arabia */
 const testimonials = [
   {
-    name: "Robert M. Chen",
-    company: "Silicon Dynamics, USA",
-    text: "They built our cloud setup from scratch and stayed with us through scaling questions. Clear communication the whole way.",
+    name: "Olivia Bennett",
+    company: "Harbor Labs, Australia",
+    text: "They shipped a clean admin for our product and stuck to realistic timelines. Time zone overlap with their team was easier than we expected.",
     rating: 5,
   },
   {
-    name: "Jessica Miller",
-    company: "Innovate Financial, USA",
-    text: "Strong engineering without the overhead we saw from larger local agencies. We got straight answers and steady delivery.",
+    name: "Ryan Mitchell",
+    company: "Outback Systems, Australia",
+    text: "Solid React work and honest scoping. We liked that they asked hard questions early instead of promising everything in week one.",
     rating: 5,
   },
   {
-    name: "Liam O'Connor",
-    company: "Maple Tech Solutions, Canada",
-    text: "The frontend work was careful and fast. After the redesign, more visitors were completing our main flows.",
+    name: "Chen Wei-Ting",
+    company: "BrightWave Tech, Taiwan",
+    text: "Integration with our APIs was handled carefully and the handover notes were actually useful for our internal developers.",
     rating: 5,
   },
   {
-    name: "Sarah Parker",
-    company: "Venture Digital, USA",
-    text: "They work like partners, not a ticket queue. The automation they shipped cut down weekly manual work for our team.",
+    name: "Usman Malik",
+    company: "Lahore Commerce Hub, Pakistan",
+    text: "We needed Urdu-friendly flows and a checkout that did not break on slower networks. They tested like our real customers would.",
     rating: 5,
   },
   {
-    name: "James Wilson",
-    company: "Quantum Analytics, USA",
-    text: "Solid technical depth and calm updates on Slack. We keep going back to them for SaaS builds.",
+    name: "Ayesha Siddiqui",
+    company: "Karachi FinTech Collective, Pakistan",
+    text: "Clear weekly updates and no surprise invoices. The dashboard they built is what our board actually looks at now.",
     rating: 5,
   },
   {
-    name: "David Smith",
-    company: "Blue Horizon, Canada",
-    text: "Delivery stayed on track and they were quick to answer when we had questions. Multi-tenant setup was handled carefully.",
+    name: "Hassan Raza",
+    company: "Faisalabad Digital Works, Pakistan",
+    text: "Local context helped a lot. They understood how our team works and kept the codebase simple enough for us to hire on later.",
     rating: 5,
   },
   {
-    name: "Alex Thompson",
-    company: "NextGen Media, Australia",
-    text: "The site they built looks sharp and the small motion details feel intentional. Happy to recommend them.",
-    rating: 5,
-  },
-  {
-    name: "Marcus Aurelius",
-    company: "E-Commerce Titans, UK",
-    text: "They moved us off a slow legacy stack onto something we can actually build on. Professional team.",
-    rating: 5,
-  },
-  {
-    name: "Emily Davis",
-    company: "HealthTrack AI, USA",
-    text: "Security and privacy were taken seriously from the first call. That mattered for our investors.",
-    rating: 5,
-  },
-  {
-    name: "Michael J. Fox",
-    company: "Startup Lab, USA",
-    text: "Fast iteration, good design taste, and they do not disappear after launch. One of our better vendor choices.",
+    name: "Nora Al-Farsi",
+    company: "Riyadh Logistics Suite, Saudi Arabia",
+    text: "Arabic layout and RTL were done properly, not patched on at the end. Our ops team trusts the new tools day to day.",
     rating: 5,
   },
 ];

@@ -7,6 +7,7 @@ export const SERVICE_OPTIONS = [
   "DevOps and Cloud",
   "UI/UX Design",
   "Mobile Apps",
+  "Desktop Applications",
 ] as const;
 
 export type ServiceOption = (typeof SERVICE_OPTIONS)[number];

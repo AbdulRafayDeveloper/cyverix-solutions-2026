@@ -5,12 +5,16 @@ export type ServiceId =
   | "automation"
   | "devops"
   | "uiux"
-  | "mobile";
+  | "mobile"
+  | "desktop";
 
 export interface ServiceDef {
   id: ServiceId;
   title: string;
+  /** Short mono tag in modals and cards (e.g. WEB, SAAS) */
   label: string;
+  /** Plain label for /services jump nav and section chips (readable) */
+  jumpLabel: string;
   shortDescription: string;
   longDescription: string;
   features: string[];
@@ -22,6 +26,7 @@ export const SERVICES: ServiceDef[] = [
     id: "website",
     title: "Website",
     label: "WEB",
+    jumpLabel: "Websites",
     shortDescription:
       "Websites and customer portals built to load fast, convert visitors, and stay easy to update.",
     longDescription:
@@ -39,6 +44,7 @@ export const SERVICES: ServiceDef[] = [
     id: "software",
     title: "Software Development",
     label: "SAAS",
+    jumpLabel: "SaaS and software",
     shortDescription:
       "SaaS products and internal tools built to handle real traffic, real users, and real permissions.",
     longDescription:
@@ -56,6 +62,7 @@ export const SERVICES: ServiceDef[] = [
     id: "ai",
     title: "AI Solutions",
     label: "AI",
+    jumpLabel: "AI and ML",
     shortDescription:
       "Practical AI features that save time and support decisions, without hype.",
     longDescription:
@@ -73,6 +80,7 @@ export const SERVICES: ServiceDef[] = [
     id: "automation",
     title: "Automation Systems",
     label: "AUTO",
+    jumpLabel: "Automation",
     shortDescription:
       "Connect your tools so repeat work runs on a schedule or on events, with alerts when something breaks.",
     longDescription:
@@ -88,8 +96,9 @@ export const SERVICES: ServiceDef[] = [
   },
   {
     id: "devops",
-    title: "DevOps & Cloud",
+    title: "DevOps and Cloud",
     label: "INFRA",
+    jumpLabel: "DevOps and cloud",
     shortDescription:
       "Infrastructure and deploy pipelines you can repeat, with security baked in from the start.",
     longDescription:
@@ -101,6 +110,7 @@ export const SERVICES: ServiceDef[] = [
     id: "uiux",
     title: "UI/UX Design",
     label: "DESIGN",
+    jumpLabel: "UI / UX",
     shortDescription:
       "Interfaces that match your brand and make the next step obvious.",
     longDescription:
@@ -112,11 +122,30 @@ export const SERVICES: ServiceDef[] = [
     id: "mobile",
     title: "Mobile Apps",
     label: "APPS",
+    jumpLabel: "Mobile apps",
     shortDescription:
       "iOS and Android apps that feel native, with offline support when you need it.",
     longDescription:
       "We ship with React Native and Flutter, and go fully native when the product calls for it. You get sign-in, sync, push, and store rules handled so you can focus on product instead of platform surprises.",
     features: ["iOS and Android", "Offline support", "Push notifications", "Store requirements", "Live sync"],
     color: "#00FFB2",
+  },
+  {
+    id: "desktop",
+    title: "Desktop Applications",
+    label: "DESK",
+    jumpLabel: "Desktop apps",
+    shortDescription:
+      "Windows, macOS, and Linux apps that live on the machine: fast startup, real offline use, and updates you control.",
+    longDescription:
+      "We build desktop software with Electron, Tauri, or native stacks when performance or OS integration matters most. You get installers, sensible auto-update paths, and clear separation between local data and cloud sync so teams can work without living in the browser. We also wire in shortcuts, tray icons, and file associations when your workflow needs them.",
+    features: [
+      "Windows, macOS, and Linux targets",
+      "Installers and update channels",
+      "Offline-first where it helps",
+      "System tray, menus, and shortcuts",
+      "Local files and device access done safely",
+    ],
+    color: "#7B5EA7",
   },
 ];

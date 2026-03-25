@@ -4,11 +4,6 @@ import React, { memo, useId } from "react";
 import type { CaseStudy } from "@/data/case-studies";
 import { getCaseStudyPalette, getCaseStudyVisualTheme, type CaseStudyVisualTheme } from "./case-study-visual-theme";
 
-function truncate(s: string, max: number) {
-  if (s.length <= max) return s;
-  return `${s.slice(0, max - 1)}…`;
-}
-
 function ThemeContent({
   theme,
   palette,
@@ -206,8 +201,6 @@ export const CaseStudyVisual = memo(function CaseStudyVisual({ study }: { study:
   const reactId = useId().replace(/:/g, "");
   const theme = getCaseStudyVisualTheme(study);
   const palette = getCaseStudyPalette(study.id);
-  const titleShort = truncate(study.title, 24);
-  const industryShort = truncate(study.industry.split("·")[0]?.trim() ?? study.industry, 32);
 
   const gradBg = `bg-${reactId}`;
   const gradOrb = `orb-${reactId}`;
@@ -258,12 +251,6 @@ export const CaseStudyVisual = memo(function CaseStudyVisual({ study }: { study:
           <circle cx="58" cy="66" r="5" fill="#ff5f57" opacity={0.85} />
           <circle cx="78" cy="66" r="5" fill="#febc2e" opacity={0.85} />
           <circle cx="98" cy="66" r="5" fill="#28c840" opacity={0.85} />
-          <text x="120" y="71" fill="rgba(240,240,255,0.9)" fontSize="11" fontFamily="ui-monospace, system-ui, sans-serif" fontWeight="600">
-            {titleShort}
-          </text>
-          <text x="120" y="86" fill="rgba(136,136,170,0.92)" fontSize="9" fontFamily="ui-monospace, system-ui, sans-serif">
-            {industryShort}
-          </text>
         </g>
 
         <g transform="translate(0, 12)">

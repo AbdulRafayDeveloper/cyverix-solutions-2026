@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Globe, Cpu, Bot, Settings, Layers, Layout, Smartphone } from "lucide-react";
+import { Globe, Cpu, Bot, Settings, Layers, Layout, Smartphone, Monitor } from "lucide-react";
 import type { ServiceId } from "./services";
 
 const MAP: Record<ServiceId, LucideIcon> = {
@@ -10,6 +10,7 @@ const MAP: Record<ServiceId, LucideIcon> = {
   devops: Layers,
   uiux: Layout,
   mobile: Smartphone,
+  desktop: Monitor,
 };
 
 export function getServiceIcon(id: ServiceId): LucideIcon {

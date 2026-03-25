@@ -95,7 +95,7 @@ export const Services = () => {
             What We <span className="text-gradient">Build</span>
           </motion.h2>
           <p className="text-text-secondary max-w-2xl mx-auto text-lg mb-6">
-            We build websites, products, and AI features for teams that need clear delivery, not buzzwords. Pick a lane below or read the full list on our services page.
+            We build websites, desktop and mobile apps, SaaS-style products, and AI features for teams that need clear delivery, not buzzwords. Pick a lane below or read the full list on our services page.
           </p>
           <Link
             href="/services"

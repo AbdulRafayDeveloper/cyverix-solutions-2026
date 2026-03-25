@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -8,6 +8,9 @@ import { ArrowUpRight, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { caseStudies } from "@/data/case-studies";
+
+const INITIAL_VISIBLE = 7;
+const LOAD_MORE_COUNT = 5;
 
 const CaseStudyVisual = dynamic(
   () => import("@/components/case-studies/CaseStudyVisual").then((m) => m.CaseStudyVisual),
@@ -51,6 +54,14 @@ function ExploreStrip({
 }
 
 export default function CaseStudiesPage() {
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
+  const visibleStudies = useMemo(() => caseStudies.slice(0, visibleCount), [visibleCount]);
+  const hasMore = visibleCount < caseStudies.length;
+
+  const loadMore = () => {
+    setVisibleCount((c) => Math.min(c + LOAD_MORE_COUNT, caseStudies.length));
+  };
+
   return (
     <main className="bg-background min-h-screen text-text-primary">
       <Navbar />
@@ -104,12 +115,12 @@ export default function CaseStudiesPage() {
           </div>
 
               <p className="text-sm text-text-secondary/90 mb-14 md:mb-16 max-w-3xl border-l-2 border-primary/40 pl-4">
-            Each preview image matches that project&apos;s industry and product type. The text matches what we actually delivered. If a
-            public link exists, you can open the live product.
+            Each preview image matches that project&apos;s industry and product type. Full details and tech stack are in the sections beside
+            the image. If a public link exists, you can open the live product.
           </p>
 
           <div className="flex flex-col gap-20 md:gap-28 lg:gap-36">
-            {caseStudies.map((study, index) => {
+            {visibleStudies.map((study, index) => {
               const imageRight = index % 2 === 0;
               return (
                 <motion.article
@@ -135,16 +146,6 @@ export default function CaseStudiesPage() {
                         </Suspense>
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/15 to-transparent pointer-events-none" />
-                      <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
-                        {study.techStack.map((t) => (
-                          <span
-                            key={t}
-                            className="text-[8px] sm:text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-primary/20 border border-primary/45 text-primary backdrop-blur-sm"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
                     </div>
 
                     <div className={`lg:col-span-7 ${imageRight ? "lg:order-2" : "lg:order-1"} flex flex-col gap-6`}>
@@ -209,12 +210,12 @@ export default function CaseStudiesPage() {
                         </div>
                       </div>
 
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2 border-t border-border/50">
-                        <div>
+                      <div className="flex flex-col gap-4 pt-2 border-t border-border/50 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                        <div className="min-w-0 flex-1 sm:max-w-[min(100%,26rem)]">
                           <p className="text-[10px] font-mono text-text-secondary uppercase tracking-widest mb-1">Cyverix role</p>
-                          <p className="font-semibold text-sm text-text-primary">{study.role}</p>
+                          <p className="font-semibold text-sm text-text-primary leading-snug line-clamp-2">{study.role}</p>
                         </div>
-                        <div className="flex flex-wrap gap-3 sm:ml-auto">
+                        <div className="flex flex-wrap gap-3 shrink-0 sm:justify-end">
                           {study.liveUrl ? (
                             <a
                               href={study.liveUrl}
@@ -240,6 +241,18 @@ export default function CaseStudiesPage() {
               );
             })}
           </div>
+
+          {hasMore ? (
+            <div className="flex justify-center mt-12 md:mt-16">
+              <button
+                type="button"
+                onClick={loadMore}
+                className="inline-flex items-center justify-center px-10 py-4 rounded-2xl border border-primary/40 bg-primary/10 text-primary font-bold text-sm uppercase tracking-widest hover:bg-primary/15 transition-colors"
+              >
+                Load more
+              </button>
+            </div>
+          ) : null}
 
           <div className="mt-24 md:mt-32 text-center py-16 md:py-20 glass rounded-[2rem] md:rounded-[3rem] border border-dashed border-border/50">
             <h3 className="text-2xl md:text-3xl font-syne font-bold mb-4">Planning something comparable?</h3>

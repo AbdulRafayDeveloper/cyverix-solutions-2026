@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Web, SaaS, AI, automation, DevOps, UI and UX, and mobile development. See what we offer and get in touch when you are ready.",
+    "Websites, SaaS, mobile and desktop apps, automation, cloud, design, and AI. Clear service list and how to reach us.",
 };
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {

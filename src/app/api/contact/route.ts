@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       from: `"Lead: ${fullName}" <${process.env.SMTP_USER}>`,
       replyTo: email,
       to: process.env.COMPANY_EMAIL || 'hello@cyverix.com',
-      subject: `🚀 New Inquiry: ${service} | ${fullName}`,
+      subject: `New inquiry: ${service} | ${fullName}`,
       html: `
         <div style="background-color: #0A0A0F; color: #F0F0FF; font-family: 'Inter', Helvetica, Arial, sans-serif; padding: 40px; border-radius: 24px; max-width: 600px; margin: auto; border: 1px solid #1E1E2E;">
           <div style="border-bottom: 1px solid #1E1E2E; padding-bottom: 24px; margin-bottom: 32px;">
@@ -81,12 +81,12 @@ export async function POST(req: Request) {
             <p style="color: #8888AA; font-size: 14px; margin-bottom: 16px;">Follow our journey</p>
             <div style="margin-bottom: 24px;">
               <a href="https://linkedin.com/company/cyverix-solutions" style="color: #00FFB2; text-decoration: none; margin: 0 10px; font-size: 12px; font-weight: 700;">LINKEDIN</a>
-              <a href="#" style="color: #00FFB2; text-decoration: none; margin: 0 10px; font-size: 12px; font-weight: 700;">FACEBOOK</a>
-              <a href="#" style="color: #00FFB2; text-decoration: none; margin: 0 10px; font-size: 12px; font-weight: 700;">INSTAGRAM</a>
+              <a href="https://facebook.com/cyverix" style="color: #00FFB2; text-decoration: none; margin: 0 10px; font-size: 12px; font-weight: 700;">FACEBOOK</a>
+              <a href="https://www.instagram.com/cyverix_solutions/?hl=en" style="color: #00FFB2; text-decoration: none; margin: 0 10px; font-size: 12px; font-weight: 700;">INSTAGRAM</a>
             </div>
             <p style="color: #444455; font-size: 11px;">
               © 2023 Cyverix Solutions <br/>
-              Faisalabad, PK
+              Faisalabad, Punjab, Pakistan
             </p>
           </div>
         </div>

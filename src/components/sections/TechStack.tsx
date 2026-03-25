@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { viewTransition, viewViewport } from "@/lib/motion";
-import { Code2, Server, Database, Brain, Smartphone, ShieldCheck } from "lucide-react";
+import { Code2, Server, Database, Brain, Smartphone, ShieldCheck, Layout, Sparkles, Monitor } from "lucide-react";
 
 const techCategories = [
   { icon: <Code2 size={22} strokeWidth={1.75} />, title: "Web Frontend", techs: ["Next.js", "React", "TypeScript", "TailwindCSS", "Bootstrap", "Material UI"] },
@@ -12,6 +12,21 @@ const techCategories = [
   { icon: <Database size={22} strokeWidth={1.75} />, title: "Database", techs: ["PostgreSQL", "MySQL", "Cassandra", "MariaDB", "Supabase", "Redis", "MongoDB"] },
   { icon: <Brain size={22} strokeWidth={1.75} />, title: "AI/ML", techs: ["OpenAI", "Hugging Face", "LangChain", "Pinecone", "Gemini API", "TensorFlow"] },
   { icon: <ShieldCheck size={22} strokeWidth={1.75} />, title: "DevOps", techs: ["Docker", "Kubernetes", "AWS", "GitHub Actions", "Terraform", "Vercel"] },
+  {
+    icon: <Layout size={22} strokeWidth={1.75} />,
+    title: "UI/UX",
+    techs: ["Figma", "Framer", "Adobe XD", "design systems", "prototyping", "accessibility (a11y)"],
+  },
+  {
+    icon: <Sparkles size={22} strokeWidth={1.75} />,
+    title: "Vibe Coding",
+    techs: ["Cursor", "Google Antigravity", "Lovable", "GitHub Copilot", "v0 (Vercel)", "Bolt.new"],
+  },
+  {
+    icon: <Monitor size={22} strokeWidth={1.75} />,
+    title: "Desktop Apps",
+    techs: ["Electron", "Tauri", ".NET", "Qt", "Windows APIs", "macOS tooling"],
+  },
 ];
 
 export const TechStack = () => {

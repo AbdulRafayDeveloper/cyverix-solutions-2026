@@ -99,7 +99,7 @@ export default function AboutPage() {
                 Based in Faisalabad, working with clients worldwide
               </h2>
               <p className="text-text-secondary leading-relaxed text-base md:text-lg mb-5">
-                Our studio is in Faisalabad, Pakistan. We chose it on purpose: strong talent, good focus, and a lower cost base than many big cities. That helps you get more of the work in your budget.
+                Our studio is in Faisalabad, Punjab, Pakistan. We chose it on purpose: strong talent, good focus, and a lower cost base than many big cities. That helps you get more of the work in your budget.
               </p>
               <p className="text-text-secondary leading-relaxed text-base md:text-lg">
                 Most of how we work with you is remote. Once communication is clear and deadlines are real, time zones are just scheduling. If you are in London, Dubai, or Chicago, we have already done the awkward first call and made it work.
