@@ -1,10 +1,8 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { viewTransition, viewViewport } from "@/lib/motion";
-import { ArrowUpRight } from "lucide-react";
 
 const pillars = [
   {
@@ -180,21 +178,6 @@ export const About = () => {
                 </motion.li>
               ))}
             </motion.ul>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={viewViewport}
-              transition={{ ...viewTransition, delay: 0.2 }}
-            >
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-[0.12em] hover:gap-3 transition-all group"
-              >
-                Full story on About
-                <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
-            </motion.div>
           </div>
         </div>
       </div>
