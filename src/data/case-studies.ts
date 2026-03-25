@@ -20,7 +20,7 @@ export interface CaseStudy {
   role: string;
 }
 
-export const caseStudies: CaseStudy[] = [
+const caseStudiesData: CaseStudy[] = [
   {
     id: "droppr-ai",
     title: "DropPR.ai",
@@ -702,3 +702,22 @@ export const caseStudies: CaseStudy[] = [
     role: "End-to-end e-commerce platform engineering",
   },
 ];
+
+/** These entries appear last in the list (sequence: Panda Chat → … → Adziyo). */
+const CASE_STUDIES_TAIL_ORDER = [
+  "panda-chat",
+  "chooseyourchoice",
+  "medaibility",
+  "okani-travels",
+  "detext-ai",
+  "adziyo",
+] as const;
+
+export const caseStudies: CaseStudy[] = (() => {
+  const tailIds = new Set<string>(CASE_STUDIES_TAIL_ORDER);
+  const head = caseStudiesData.filter((c) => !tailIds.has(c.id));
+  const tail = CASE_STUDIES_TAIL_ORDER.map((id) => caseStudiesData.find((c) => c.id === id)).filter(
+    (c): c is CaseStudy => c != null
+  );
+  return [...head, ...tail];
+})();

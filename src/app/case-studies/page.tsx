@@ -4,7 +4,15 @@ import React, { Suspense, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { ArrowUpRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import {
+  ArrowUpRight,
+  ArrowLeft,
+  CheckCircle2,
+  ChevronDown,
+  Layers,
+  Sparkles,
+  Zap,
+} from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { caseStudies } from "@/data/case-studies";
@@ -20,43 +28,11 @@ const CaseStudyVisual = dynamic(
   }
 );
 
-const exploreLinks = [
-  { href: "/services", label: "Services" },
-  { href: "/case-studies", label: "Case studies" },
-  { href: "/work", label: "Work" },
-  { href: "/about", label: "About" },
-] as const;
-
-function ExploreStrip({
-  variant,
-  className,
-}: {
-  variant: "muted" | "compact";
-  className?: string;
-}) {
-  const base =
-    variant === "muted"
-      ? "text-text-secondary hover:text-primary border-border/60"
-      : "text-text-secondary/90 hover:text-primary border-border/40";
-  return (
-    <nav className={`flex flex-wrap gap-2 md:gap-3 ${className ?? ""}`} aria-label="Site sections">
-      {exploreLinks.map(({ href, label }) => (
-        <Link
-          key={href}
-          href={href}
-          className={`text-[10px] md:text-xs font-mono uppercase tracking-wider px-3 py-2 rounded-xl border transition-colors ${base}`}
-        >
-          {label}
-        </Link>
-      ))}
-    </nav>
-  );
-}
-
 export default function CaseStudiesPage() {
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
   const visibleStudies = useMemo(() => caseStudies.slice(0, visibleCount), [visibleCount]);
   const hasMore = visibleCount < caseStudies.length;
+  const total = caseStudies.length;
 
   const loadMore = () => {
     setVisibleCount((c) => Math.min(c + LOAD_MORE_COUNT, caseStudies.length));
@@ -66,59 +42,139 @@ export default function CaseStudiesPage() {
     <main className="bg-background min-h-screen text-text-primary">
       <Navbar />
 
-      <section className="pt-32 md:pt-40 pb-16 md:pb-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-widest mb-10 md:mb-12 hover:opacity-70 transition-all"
-          >
-            <ArrowLeft size={16} /> Back to home
-          </Link>
+      <section className="relative pt-28 md:pt-36 pb-12 md:pb-16 px-4 sm:px-6 overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none opacity-90"
+          style={{
+            backgroundImage: `
+              radial-gradient(ellipse 100% 65% at 15% -10%, rgba(123, 94, 167, 0.2), transparent 52%),
+              radial-gradient(ellipse 80% 55% at 90% 20%, rgba(0, 255, 178, 0.11), transparent 48%),
+              radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0, 255, 178, 0.05), transparent 55%)
+            `,
+          }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 opacity-[0.2] pointer-events-none"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)`,
+            backgroundSize: "44px 44px",
+            maskImage: "linear-gradient(180deg, black 0%, black 50%, transparent 100%)",
+          }}
+          aria-hidden
+        />
+        <div className="absolute top-24 right-[12%] h-72 w-72 rounded-full bg-primary/10 blur-[100px] pointer-events-none" aria-hidden />
+        <div className="absolute bottom-10 left-[8%] h-56 w-56 rounded-full bg-secondary/15 blur-[90px] pointer-events-none" aria-hidden />
 
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-10 mb-12 md:mb-16">
-            <div className="max-w-3xl">
-              <motion.span
-                initial={{ opacity: 0, y: 10 }}
+        <div className="max-w-7xl mx-auto relative z-[1]">
+          <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-widest mb-8 md:mb-10 hover:opacity-75 transition-opacity"
+            >
+              <ArrowLeft size={16} /> Back to home
+            </Link>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,340px)] gap-12 lg:gap-16 xl:gap-20 items-start">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-primary font-mono text-xs uppercase tracking-[0.4em] mb-4 block"
+                transition={{ duration: 0.45 }}
+                className="inline-flex items-center gap-2.5 rounded-full border border-primary/35 bg-gradient-to-r from-primary/[0.12] via-primary/[0.05] to-transparent px-4 py-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.35em] text-primary mb-6 shadow-[0_0_48px_-12px_rgba(0,255,178,0.35)]"
               >
+                <Sparkles size={14} className="shrink-0 opacity-90" aria-hidden />
                 Case studies
-              </motion.span>
+              </motion.div>
+
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 }}
-                className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-syne font-extrabold tracking-tighter leading-[0.95] mb-6"
+                transition={{ duration: 0.5, delay: 0.06 }}
+                className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] font-syne font-extrabold tracking-tighter leading-[0.95] mb-6"
               >
-                Software we&apos;ve <br />
-                <span className="text-gradient">shipped</span>
+                Proof from the{" "}
+                <span className="text-gradient">field</span>
               </motion.h1>
+
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-text-secondary text-base md:text-lg max-w-xl leading-relaxed"
+                className="text-text-secondary text-base md:text-lg max-w-2xl leading-relaxed mb-8"
               >
-                Real products we shipped: SaaS, AI, marketplaces, education tools, and more. Each entry lists the problem, what we did,
-                and what you should care about, in plain language.
+                Real products we shipped: SaaS, AI, marketplaces, education tools, and more. Each story is problem, approach, and what shipped — in
+                plain language you can scan in minutes.
               </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.28 }}
+                className="flex flex-wrap items-center gap-3 md:gap-4"
+              >
+                <span className="inline-flex items-center gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-3.5 py-2 text-[12px] md:text-sm font-medium text-text-primary/95 backdrop-blur-sm">
+                  <Layers size={15} className="text-primary shrink-0" aria-hidden />
+                  {total}+ write-ups
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-3.5 py-2 text-[12px] md:text-sm font-medium text-text-primary/95 backdrop-blur-sm">
+                  <Zap size={15} className="text-secondary shrink-0" aria-hidden />
+                  Multi-vertical
+                </span>
+              </motion.div>
             </div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.25 }}
-              className="lg:pt-4"
+
+            <motion.aside
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.12 }}
+              className="relative lg:pt-4"
+              aria-label="Highlights"
             >
-              <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-text-secondary mb-3">Explore</p>
-              <ExploreStrip variant="muted" className="justify-start lg:justify-end" />
-            </motion.div>
+              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/15 via-transparent to-secondary/20 blur-2xl opacity-70 pointer-events-none" aria-hidden />
+              <div className="relative rounded-[1.75rem] border border-white/[0.1] bg-gradient-to-br from-surface/90 via-background/80 to-background/60 p-6 md:p-8 backdrop-blur-md shadow-[0_32px_100px_-40px_rgba(0,0,0,0.85)]">
+                <span
+                  className="absolute top-4 left-4 w-10 h-10 border-t-2 border-l-2 border-primary/40 rounded-tl-lg pointer-events-none"
+                  aria-hidden
+                />
+                <span
+                  className="absolute bottom-4 right-4 w-10 h-10 border-b-2 border-r-2 border-secondary/35 rounded-br-lg pointer-events-none"
+                  aria-hidden
+                />
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary mb-2">At a glance</p>
+                <p className="font-syne text-xl md:text-2xl font-bold text-white leading-snug mb-6">
+                  Every preview matches the product&apos;s industry — details and stack live beside the art.
+                </p>
+                <ul className="space-y-4 text-sm text-text-secondary/95">
+                  <li className="flex gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary shadow-[0_0_12px_rgba(0,255,178,0.6)]" />
+                    Live links open when the build is public.
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary/90" />
+                    Scroll the list — load more when you want more depth.
+                  </li>
+                </ul>
+              </div>
+            </motion.aside>
           </div>
 
-              <p className="text-sm text-text-secondary/90 mb-14 md:mb-16 max-w-3xl border-l-2 border-primary/40 pl-4">
-            Each preview image matches that project&apos;s industry and product type. Full details and tech stack are in the sections beside
-            the image. If a public link exists, you can open the live product.
-          </p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.35 }}
+            className="text-sm text-text-secondary/90 mt-12 md:mt-14 max-w-3xl border-l-2 border-primary/40 pl-4 leading-relaxed"
+          >
+            Each preview image matches that project&apos;s industry and product type. Full details and tech stack are in the sections beside the image.
+            If a public link exists, you can open the live product.
+          </motion.p>
+        </div>
+      </section>
 
+      <section className="px-4 sm:px-6 pb-24">
+        <div className="max-w-7xl mx-auto">
           <div className="flex flex-col gap-20 md:gap-28 lg:gap-36">
             {visibleStudies.map((study, index) => {
               const imageRight = index % 2 === 0;
@@ -137,15 +193,18 @@ export default function CaseStudiesPage() {
                       imageRight ? "" : "lg:flex-row-reverse"
                     }`}
                   >
-                    <div
-                      className={`lg:col-span-5 ${imageRight ? "lg:order-1" : "lg:order-2"} overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border border-border/80 bg-surface aspect-[16/10] relative shrink-0 isolate`}
-                    >
-                      <div className="absolute inset-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-[1.02] motion-reduce:group-hover:scale-100">
-                        <Suspense fallback={<div className="absolute inset-0 bg-surface animate-pulse" aria-hidden />}>
-                          <CaseStudyVisual study={study} />
-                        </Suspense>
+                    <div className={`lg:col-span-5 ${imageRight ? "lg:order-1" : "lg:order-2"} shrink-0`}>
+                      <div className="relative p-[1px] rounded-[1.85rem] md:rounded-[2.15rem] bg-gradient-to-br from-primary/35 via-white/10 to-secondary/30 shadow-[0_28px_100px_-40px_rgba(0,0,0,0.9)]">
+                        <div className="overflow-hidden rounded-[calc(1.85rem-1px)] md:rounded-[calc(2.15rem-1px)] bg-surface aspect-[16/10] relative isolate">
+                          <div className="absolute inset-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-[1.02] motion-reduce:group-hover:scale-100">
+                            <Suspense fallback={<div className="absolute inset-0 bg-surface animate-pulse" aria-hidden />}>
+                              <CaseStudyVisual study={study} />
+                            </Suspense>
+                          </div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/10 to-transparent pointer-events-none z-[1]" />
+                          <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.06] rounded-[inherit] pointer-events-none z-[2]" />
+                        </div>
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/15 to-transparent pointer-events-none" />
                     </div>
 
                     <div className={`lg:col-span-7 ${imageRight ? "lg:order-2" : "lg:order-1"} flex flex-col gap-6`}>
@@ -154,13 +213,13 @@ export default function CaseStudiesPage() {
                           <span className="text-[9px] font-mono font-bold uppercase tracking-[0.28em] text-text-secondary/90">
                             Industry
                           </span>
-                          <span className="inline-flex items-center rounded-full border-2 border-primary/55 bg-primary/10 px-3 py-1.5 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wide text-primary leading-snug max-w-full">
+                          <span className="inline-flex items-center rounded-full border border-primary/25 bg-primary/[0.07] px-3 py-1.5 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wide text-primary leading-snug max-w-full">
                             {study.industry}
                           </span>
                         </div>
                         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] text-text-secondary uppercase tracking-[0.2em]">
                           <span className="text-primary">{study.category}</span>
-                          <span className="hidden sm:inline w-8 h-px bg-border" />
+                          <span className="hidden sm:inline w-8 h-px bg-gradient-to-r from-border to-transparent" />
                           <span>{study.year}</span>
                         </div>
                       </div>
@@ -171,14 +230,20 @@ export default function CaseStudiesPage() {
 
                       <p className="text-text-secondary/95 text-base md:text-lg leading-relaxed font-medium">{study.summary}</p>
 
-                      <div className="grid gap-6 sm:grid-cols-2">
-                        <div className="rounded-2xl border border-border/80 bg-surface/40 p-5">
-                          <h3 className="text-[10px] font-mono uppercase tracking-[0.25em] text-primary mb-3">Challenge</h3>
-                          <p className="text-sm text-text-secondary leading-relaxed">{study.challenge}</p>
-                        </div>
-                        <div className="rounded-2xl border border-border/80 bg-surface/40 p-5">
-                          <h3 className="text-[10px] font-mono uppercase tracking-[0.25em] text-secondary mb-3">Our approach</h3>
-                          <p className="text-sm text-text-secondary leading-relaxed">{study.solution}</p>
+                      <div className="relative pl-5 md:pl-6">
+                        <div
+                          className="absolute left-0 top-1 bottom-1 w-[3px] rounded-full bg-gradient-to-b from-primary/50 via-secondary/40 to-primary/20"
+                          aria-hidden
+                        />
+                        <div className="space-y-8">
+                          <div>
+                            <h3 className="text-[10px] font-mono uppercase tracking-[0.28em] text-primary mb-2.5">Challenge</h3>
+                            <p className="text-sm md:text-[15px] text-text-secondary leading-relaxed">{study.challenge}</p>
+                          </div>
+                          <div>
+                            <h3 className="text-[10px] font-mono uppercase tracking-[0.28em] text-secondary mb-2.5">Our approach</h3>
+                            <p className="text-sm md:text-[15px] text-text-secondary leading-relaxed">{study.solution}</p>
+                          </div>
                         </div>
                       </div>
 
@@ -202,7 +267,7 @@ export default function CaseStudiesPage() {
                           {study.techStack.map((t) => (
                             <span
                               key={t}
-                              className="px-3 py-2 rounded-lg text-[11px] font-mono font-bold uppercase tracking-wide text-primary border-2 border-primary/40 bg-primary/5 shadow-[0_0_20px_-8px_rgba(0,255,178,0.35)]"
+                              className="px-3 py-2 rounded-lg text-[11px] font-mono font-semibold uppercase tracking-wide text-text-primary/95 bg-white/[0.04] border border-white/[0.08] hover:border-primary/25 transition-colors"
                             >
                               {t}
                             </span>
@@ -210,7 +275,7 @@ export default function CaseStudiesPage() {
                         </div>
                       </div>
 
-                      <div className="flex flex-col gap-4 pt-2 border-t border-border/50 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                      <div className="flex flex-col gap-4 pt-2 border-t border-white/[0.06] sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                         <div className="min-w-0 flex-1 sm:max-w-[min(100%,26rem)]">
                           <p className="text-[10px] font-mono text-text-secondary uppercase tracking-widest mb-1">Cyverix role</p>
                           <p className="font-semibold text-sm text-text-primary leading-snug line-clamp-2">{study.role}</p>
@@ -229,7 +294,7 @@ export default function CaseStudiesPage() {
                           ) : null}
                           <Link
                             href="/#contact"
-                            className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-border hover:border-primary/40 text-text-primary font-bold text-xs uppercase tracking-wider transition-colors"
+                            className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/[0.1] hover:border-primary/40 text-text-primary font-bold text-xs uppercase tracking-wider transition-colors"
                           >
                             Similar build
                           </Link>
@@ -243,13 +308,19 @@ export default function CaseStudiesPage() {
           </div>
 
           {hasMore ? (
-            <div className="flex justify-center mt-12 md:mt-16">
+            <div className="flex justify-center mt-14 md:mt-12">
               <button
                 type="button"
                 onClick={loadMore}
-                className="inline-flex items-center justify-center px-10 py-4 rounded-2xl border border-primary/40 bg-primary/10 text-primary font-bold text-sm uppercase tracking-widest hover:bg-primary/15 transition-colors"
+                className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl border border-primary/40 bg-primary/10 text-primary font-bold text-sm hover:bg-primary/16 transition-colors shadow-[0_16px_48px_-20px_rgba(0,255,178,0.35)]"
               >
-                Load more
+                <span className="tracking-wide">Load More Projects</span>
+                <ChevronDown
+                  size={22}
+                  strokeWidth={2.25}
+                  className="transition-transform duration-300 group-hover:translate-y-0.5"
+                  aria-hidden
+                />
               </button>
             </div>
           ) : null}
@@ -259,7 +330,7 @@ export default function CaseStudiesPage() {
             <p className="text-text-secondary mb-8 max-w-md mx-auto text-sm md:text-base">
               Share your limits and timeline. We will reply with a straight answer on fit, tech, and how we would deliver.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/services"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-2xl border border-border hover:border-primary/40 text-text-primary font-bold text-sm w-full sm:w-auto max-w-xs"
@@ -273,7 +344,6 @@ export default function CaseStudiesPage() {
                 Start a project
               </Link>
             </div>
-            <ExploreStrip variant="compact" className="justify-center opacity-90" />
           </div>
         </div>
       </section>
